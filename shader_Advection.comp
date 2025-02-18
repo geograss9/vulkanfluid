@@ -1,0 +1,167 @@
+#version 450
+#pragma optionNV (unroll all)
+
+
+
+layout(binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+	float deltaTime;
+} ubo;
+
+
+
+layout (binding=6, rgba32f) uniform image3D inout_currentVelocityDensity;				
+layout (binding=7, rgba32f) uniform image3D inout_currentVelocityDensityTemp;			
+//layout (binding=11, r8i) uniform iimage3D inout_BC;										
+
+
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+
+
+float getInterpDenTemp(vec3 uvwBack) {
+
+	// 함수입력 uvwBack은 unnormalized coordinate form 이어야 함.
+
+	float floorX = floor(uvwBack.x);
+	float ceilX = ceil(uvwBack.x);
+	float floorY = floor(uvwBack.y);
+	float ceilY = ceil(uvwBack.y);
+	float floorZ = floor(uvwBack.z);
+	float ceilZ = ceil(uvwBack.z);
+	
+	float X_floorX = uvwBack.x - floor(uvwBack.x);
+	//float ceilX_X = ceil(uvwBack.x) - uvwBack.x;
+	float Y_floorY = uvwBack.y - floor(uvwBack.y);
+	//float ceilY_Y = ceil(uvwBack.y) - uvwBack.y;
+	float Z_floorZ = uvwBack.z - floor(uvwBack.z);
+	//float ceilZ_Z = ceil(uvwBack.z) - uvwBack.z;
+
+	float denTemp_floorX_floorY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, floorY, floorZ))).w;
+	float denTemp_ceilX_floorY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, floorY, floorZ))).w;
+	float denTemp_ceilX_ceilY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, ceilY, floorZ))).w;
+	float denTemp_floorX_ceilY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, ceilY, floorZ))).w;
+	float denTemp_floorX_floorY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, floorY, ceilZ))).w;
+	float denTemp_ceilX_floorY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, floorY, ceilZ))).w;
+	float denTemp_ceilX_ceilY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, ceilY, ceilZ))).w;
+	float denTemp_floorX_ceilY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, ceilY, ceilZ))).w;
+
+	float denTemp_floorY_floorZ = mix(denTemp_floorX_floorY_floorZ, denTemp_ceilX_floorY_floorZ, X_floorX);
+	float denTemp_ceilY_floorZ = mix(denTemp_floorX_ceilY_floorZ, denTemp_ceilX_ceilY_floorZ, X_floorX);
+	float denTemp_floorY_ceilZ = mix(denTemp_floorX_floorY_ceilZ, denTemp_ceilX_floorY_ceilZ, X_floorX);
+	float denTemp_ceilY_ceilZ = mix(denTemp_floorX_ceilY_ceilZ, denTemp_ceilX_ceilY_ceilZ, X_floorX);
+
+	float denTemp_floorZ = mix(denTemp_floorY_floorZ, denTemp_ceilY_floorZ, Y_floorY);
+	float denTemp_ceilZ = mix(denTemp_floorY_ceilZ, denTemp_ceilY_ceilZ, Y_floorY);
+
+	//float den_ = mix(denTemp_floorZ, denTemp_ceilZ, Z_floorZ);
+
+	return mix(denTemp_floorZ, denTemp_ceilZ, Z_floorZ);
+}
+vec3 getInterpVelTemp(vec3 uvwBack) {
+
+	// 함수입력 uvwBack은 unnormalized coordinate form 이어야 함.
+
+	float floorX = floor(uvwBack.x);
+	float ceilX = ceil(uvwBack.x);
+	float floorY = floor(uvwBack.y);
+	float ceilY = ceil(uvwBack.y);
+	float floorZ = floor(uvwBack.z);
+	float ceilZ = ceil(uvwBack.z);
+	
+	float X_floorX = uvwBack.x - floor(uvwBack.x);
+	//float ceilX_X = ceil(uvwBack.x) - uvwBack.x;
+	float Y_floorY = uvwBack.y - floor(uvwBack.y);
+	//float ceilY_Y = ceil(uvwBack.y) - uvwBack.y;
+	float Z_floorZ = uvwBack.z - floor(uvwBack.z);
+	//float ceilZ_Z = ceil(uvwBack.z) - uvwBack.z;
+
+	vec3 velTemp_floorX_floorY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, floorY, floorZ))).xyz;
+	vec3 velTemp_ceilX_floorY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, floorY, floorZ))).xyz;
+	vec3 velTemp_ceilX_ceilY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, ceilY, floorZ))).xyz;
+	vec3 velTemp_floorX_ceilY_floorZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, ceilY, floorZ))).xyz;
+	vec3 velTemp_floorX_floorY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, floorY, ceilZ))).xyz;
+	vec3 velTemp_ceilX_floorY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, floorY, ceilZ))).xyz;
+	vec3 velTemp_ceilX_ceilY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(ceilX, ceilY, ceilZ))).xyz;
+	vec3 velTemp_floorX_ceilY_ceilZ = (imageLoad(inout_currentVelocityDensityTemp, ivec3(floorX, ceilY, ceilZ))).xyz;
+
+	vec3 velTemp_floorY_floorZ = mix(velTemp_floorX_floorY_floorZ, velTemp_ceilX_floorY_floorZ, X_floorX);
+	vec3 velTemp_ceilY_floorZ = mix(velTemp_floorX_ceilY_floorZ, velTemp_ceilX_ceilY_floorZ, X_floorX);
+	vec3 velTemp_floorY_ceilZ = mix(velTemp_floorX_floorY_ceilZ, velTemp_ceilX_floorY_ceilZ, X_floorX);
+	vec3 velTemp_ceilY_ceilZ = mix(velTemp_floorX_ceilY_ceilZ, velTemp_ceilX_ceilY_ceilZ, X_floorX);
+
+	vec3 velTemp_floorZ = mix(velTemp_floorY_floorZ, velTemp_ceilY_floorZ, Y_floorY);
+	vec3 velTemp_ceilZ = mix(velTemp_floorY_ceilZ, velTemp_ceilY_ceilZ, Y_floorY);
+
+	//float vel_ = mix(velTemp_floorZ, velTemp_ceilZ, Z_floorZ);
+
+	return mix(velTemp_floorZ, velTemp_ceilZ, Z_floorZ);
+}
+void main() {
+	
+	//// Global Size.
+	uvec3 globalSize;
+	globalSize.x =  gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+	globalSize.y =  gl_NumWorkGroups.y * gl_WorkGroupSize.y;
+	globalSize.z =  gl_NumWorkGroups.z * gl_WorkGroupSize.z;
+	float velScale = float(globalSize.x);
+
+	//// Unnormalized Coordinates.
+	ivec3 index = ivec3(gl_GlobalInvocationID);
+	//ivec3 index_original = index;
+
+	//// Normalized Coordinates.
+	vec3 dx = vec3( 1.0 / float(globalSize.x), 1.0 / float(globalSize.y), 1.0 / float(globalSize.z) );
+	vec3 uvw = (vec3(index.xyz)) * dx;	
+
+
+
+	///////// imageLoad
+	//int tempBC = imageLoad(inout_BC, index.xyz).r;
+
+	vec4 tempVelDen = imageLoad(inout_currentVelocityDensity, index.xyz);
+	vec3 tempVel = tempVelDen.xyz;
+	float tempDen = tempVelDen.w;
+
+	// tempVelDenTemp 은 함수 안에서 sampling 함. 그러나 uvwBack에서 tempVelTemp도 써야하므로, 읽어들어야함.
+	vec4 tempVelDenTemp = imageLoad(inout_currentVelocityDensityTemp, index.xyz);
+	vec3 tempVelTemp = tempVelDenTemp.xyz;
+	float tempDenTemp = tempVelDenTemp.w;
+
+
+
+
+
+
+
+
+
+//	if (tempBC >= 0)		// 아래에서 clamp 해주었으므로, 이 if문 쓰지 않아도 됨.
+//	{
+																		// clamp 해줘야, 점점 연기가 사라지거나, 속도장이 없어지는 현상을 막을 수 있음.
+		vec3 uvwBack = clamp( uvw - ubo.deltaTime * tempVelTemp,		// tempVel보다 tempVelTemp를 써줘야, 연기가 더 불규칙적이고 자연스럽게 나오는 듯.
+							  vec3(0.0), vec3(1.0) );
+		tempDen = getInterpDenTemp( float(globalSize) * uvwBack );		// 속도를, 입력으로서 적용할때에는, float(globalSize)를 곱해줘야 함.	// * 0.999;
+		tempVel = getInterpVelTemp( float(globalSize) * uvwBack );		// 속도를, 입력으로서 적용할때에는, float(globalSize)를 곱해줘야 함.	// * 0.999;
+
+//	}
+
+
+
+
+
+
+
+	//vec4 temVelDen;
+	tempVelDen = vec4(tempVel.xyz, tempDen.x);
+	imageStore(inout_currentVelocityDensity, index.xyz, tempVelDen);
+	imageStore(inout_currentVelocityDensityTemp, index.xyz, tempVelDen);
+
+	// for test.
+	//tempDen = tempVel.x;
+	//tempDen = float(tempIndex.x) / globalSize.x;
+
+}

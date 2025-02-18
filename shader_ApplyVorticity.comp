@@ -1,0 +1,122 @@
+#version 450
+#pragma optionNV (unroll all)
+
+
+
+layout(binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+	float deltaTime;
+} ubo;
+
+
+
+layout (binding=6, rgba32f) uniform image3D inout_currentVelocityDensity;	
+layout (binding=7, rgba32f) uniform image3D inout_currentVelocityDensityTemp;	
+layout (binding=12, rgba32f) uniform image3D inout_currentVorticity;	
+
+
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+
+
+ivec3 offset[6] =
+{
+    ivec3(1, 0, 0), // right
+	ivec3(-1, 0, 0), // left
+    ivec3(0, 1, 0), // up
+    ivec3(0, -1, 0), // down
+    ivec3(0, 0, 1), // back
+	ivec3(0, 0, -1) // front
+};
+vec3 computeEtaPsi(ivec3 index) {
+	
+	vec3 w_right	= ( imageLoad(inout_currentVorticity, index.xyz + offset[0]) ).xyz;
+	vec3 w_left		= ( imageLoad(inout_currentVorticity, index.xyz + offset[1]) ).xyz;
+	vec3 w_up		= ( imageLoad(inout_currentVorticity, index.xyz + offset[2]) ).xyz;
+	vec3 w_down		= ( imageLoad(inout_currentVorticity, index.xyz + offset[3]) ).xyz;
+	vec3 w_back		= ( imageLoad(inout_currentVorticity, index.xyz + offset[4]) ).xyz;
+	vec3 w_front	= ( imageLoad(inout_currentVorticity, index.xyz + offset[5]) ).xyz;
+
+	vec3 eta =  
+	vec3(
+		( (length(w_right)	- length(w_left))	/ 2.0 ), 
+		( (length(w_up)		- length(w_down))	/ 2.0 ),
+		( (length(w_back)	- length(w_front))	/ 2.0 )
+	);
+
+	float l = length(eta);
+	vec3 psi;
+    if (l > 1e-3)
+    {
+		psi = normalize(eta);
+	}
+	
+	return psi;
+}
+void main() {
+	
+	//// Global Size.
+	uvec3 globalSize;
+	globalSize.x =  gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+	globalSize.y =  gl_NumWorkGroups.y * gl_WorkGroupSize.y;
+	globalSize.z =  gl_NumWorkGroups.z * gl_WorkGroupSize.z;
+	float velScale = float(globalSize.x);
+
+	//// Unnormalized Coordinates.
+	ivec3 index = ivec3(gl_GlobalInvocationID);
+	//ivec3 index_original = index;
+
+	//// Normalized Coordinates.
+	vec3 dx = vec3( 1.0 / float(globalSize.x), 1.0 / float(globalSize.y), 1.0 / float(globalSize.z) );
+	vec3 uvw = (vec3(index.xyz)) * dx;	
+
+
+
+	///////// imageLoad
+	//int tempBC = imageLoad(inout_BC, index.xyz).r;
+
+	vec4 tempVelDen = imageLoad(inout_currentVelocityDensity, index.xyz);
+	vec3 tempVel = tempVelDen.xyz;		
+	float tempDen = tempVelDen.w;
+
+	vec4 tempVelDenTemp = imageLoad(inout_currentVelocityDensityTemp, index.xyz);
+	vec3 tempVelTemp = tempVelDenTemp.xyz;		
+	float tempDenTemp = tempVelDenTemp.w;
+
+	vec4 tempVorticity = imageLoad(inout_currentVorticity, index.xyz);
+	vec3 w = tempVorticity.xyz;		
+
+
+
+
+	
+
+
+
+
+	//
+	vec3 psi = computeEtaPsi(index);
+	float coeffi = 1.0;
+	tempVelTemp += coeffi * tempDenTemp * ubo.deltaTime * cross(psi, w);
+
+
+
+
+
+
+
+
+
+
+	///////// imageStore
+	//imageStore(inout_BC, index.xyz, ivec4(tempBC));
+
+	tempVelDen = vec4(tempVel.xyz, tempDen.x);
+	imageStore(inout_currentVelocityDensity, index.xyz, tempVelDen);
+
+	tempVelDenTemp = vec4(tempVelTemp.xyz, tempDenTemp.x);
+	imageStore(inout_currentVelocityDensityTemp, index.xyz, tempVelDenTemp);
+}

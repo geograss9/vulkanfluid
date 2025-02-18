@@ -1,0 +1,129 @@
+#version 450
+#pragma optionNV (unroll all)
+
+
+
+layout(binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+	float deltaTime;
+} ubo;
+
+
+
+layout (binding=6, rgba32f) uniform image3D inout_currentVelocityDensity;			// last frame image.
+
+layout (binding=9, rgba32f) uniform image3D inout_currentDivergencePressure;	// current frame image.
+layout (binding=10, rgba32f) uniform image3D inout_currentDivergencePressureTemp;	// current frame image.
+
+layout (binding=11, r8i) uniform iimage3D inout_BC;										// last frame image.
+
+
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+
+ivec3 offset[6] =
+{
+    ivec3(1, 0, 0), // right
+	ivec3(-1, 0, 0), // left
+    ivec3(0, 1, 0), // up
+    ivec3(0, -1, 0), // down
+    ivec3(0, 0, 1), // back
+	ivec3(0, 0, -1) // front
+};
+void main() {
+	
+	//// Global Size.
+	uvec3 globalSize;
+	globalSize.x =  gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+	globalSize.y =  gl_NumWorkGroups.y * gl_WorkGroupSize.y;
+	globalSize.z =  gl_NumWorkGroups.z * gl_WorkGroupSize.z;
+
+	//// Unnormalized Coordinates.
+	ivec3 index = ivec3(gl_GlobalInvocationID);
+	//ivec3 index_original = index;
+	int left = index.x - 1;
+	int right = index.x + 1;
+	int up = index.y + 1;
+	int down = index.y - 1;
+	int front = index.z - 1;
+	int back = index.z + 1;
+
+	//// Normalized Coordinates.
+	vec3 globalPos = vec3( float(index.x) / globalSize.x, float(index.y) / globalSize.y, float(index.z) / globalSize.z );
+	globalPos *= 2.0;
+	globalPos -= 1.0;
+
+	// etc parameters
+	float velScale = float(globalSize.y);
+
+
+
+	///////// imageLoad
+	int tempBC = imageLoad(inout_BC, index.xyz).r;
+
+	vec4 tempVelDen = imageLoad(inout_currentVelocityDensity, index.xyz);
+	vec3 tempVel = tempVelDen.xyz;		
+	float tempDen = tempVelDen.w;
+
+	vec4 tempDiverPressure = imageLoad(inout_currentDivergencePressure, index.xyz);
+	float tempDiver = tempDiverPressure.x;
+	float tempPressure = tempDiverPressure.w;
+
+	vec4 tempDiverPressureTemp = imageLoad(inout_currentDivergencePressureTemp, index.xyz);
+	float tempDiverTemp = tempDiverPressureTemp.x;
+	float tempPressureTemp = tempDiverPressureTemp.w;
+
+
+
+
+
+
+
+
+
+	if (tempBC >= 0)	// boundary가 아니면
+    {
+		float div = 0.0;
+
+		for (int i = 0; i < 6; i++) 
+		{
+			int nearBC = imageLoad(inout_BC, index.xyz + offset[i]).r;
+			if (nearBC == -1) {
+				div += dot( tempVel.xyz, vec3(offset[i]) );
+			}
+			if (nearBC == -2) {
+				vec3 nearVel = imageLoad(inout_currentVelocityDensity, index.xyz + offset[i]).xyz;
+				div += dot( 2 * nearVel.xyz - tempVel.xyz, vec3(offset[i]) );
+			}
+			else {
+				vec3 nearVel = imageLoad(inout_currentVelocityDensity, index.xyz + offset[i]).xyz;
+				div += dot( nearVel.xyz, vec3(offset[i]) );
+			}
+		}
+
+		tempDiver = 0.5 * div;
+		tempPressure = 0.0;
+		tempPressureTemp = 0.0;
+	}
+
+
+	
+
+
+
+
+
+
+	///////// imageStore
+	imageStore(inout_BC, index.xyz, ivec4(tempBC));
+
+	tempDiverPressure = vec4(tempDiver.x, tempDiverPressure.yz, tempPressure.x);
+	imageStore(inout_currentDivergencePressure, index.xyz, tempDiverPressure);
+
+	tempDiverPressureTemp = vec4(tempDiverTemp.x, tempDiverPressureTemp.yz, tempPressureTemp.x);
+	imageStore(inout_currentDivergencePressureTemp, index.xyz, tempDiverPressureTemp);
+
+}

@@ -1,0 +1,102 @@
+#version 450
+#pragma optionNV (unroll all)
+
+
+
+layout(binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+	float deltaTime;
+} ubo;
+
+
+layout (binding=6, rgba32f) uniform image3D inout_currentVelocityDensity;	
+layout (binding=7, rgba32f) uniform image3D inout_currentVelocityDensityTemp;										
+layout (binding=12, rgba32f) uniform image3D inout_currentVorticity;	
+
+
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+
+
+ivec3 offset[6] =
+{
+    ivec3(1, 0, 0), // right
+	ivec3(-1, 0, 0), // left
+    ivec3(0, 1, 0), // up
+    ivec3(0, -1, 0), // down
+    ivec3(0, 0, 1), // back
+	ivec3(0, 0, -1) // front
+};
+vec3 vectorCurlVelTemp(ivec3 index) {
+	
+	vec3 inputVel_plusX		= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[0]) ).xyz;
+	vec3 inputVel_minusX	= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[1]) ).xyz;
+	vec3 inputVel_plusY		= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[2]) ).xyz;
+	vec3 inputVel_minusY	= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[3]) ).xyz;
+	vec3 inputVel_plusZ		= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[4]) ).xyz;
+	vec3 inputVel_minusZ	= ( imageLoad(inout_currentVelocityDensityTemp, index.xyz + offset[5]) ).xyz;
+
+	vec3 curlResult =
+	vec3
+	(
+		((inputVel_plusY.z - inputVel_minusY.z) / 2.0) - ((inputVel_plusZ.y - inputVel_minusZ.y) / 2.0) ,
+		((inputVel_plusZ.x - inputVel_minusZ.x) / 2.0) - ((inputVel_plusX.z - inputVel_minusX.z) / 2.0) , 
+		((inputVel_plusX.y - inputVel_minusX.y) / 2.0) - ((inputVel_plusY.x - inputVel_minusY.x) / 2.0)
+	);
+
+	return curlResult;
+}
+void main() {
+	
+	//// Global Size.
+	uvec3 globalSize;
+	globalSize.x =  gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+	globalSize.y =  gl_NumWorkGroups.y * gl_WorkGroupSize.y;
+	globalSize.z =  gl_NumWorkGroups.z * gl_WorkGroupSize.z;
+	float velScale = float(globalSize.x);
+
+	//// Unnormalized Coordinates.
+	ivec3 index = ivec3(gl_GlobalInvocationID);
+	//ivec3 index_original = index;
+
+	//// Normalized Coordinates.
+	vec3 dx = vec3( 1.0 / float(globalSize.x), 1.0 / float(globalSize.y), 1.0 / float(globalSize.z) );
+	vec3 uvw = (vec3(index.xyz)) * dx;	
+
+
+
+	///////// imageLoad
+	//// vectorCurlVel()함수에서 읽어오므로, 불필요해서, 주석처리.
+	//vec4 tempVelDenTemp = imageLoad(inout_currentVelocityDensityTemp, index.xyz);
+	//vec3 tempVelTemp = tempVelDen.xyz;		
+	//float tempDenTemp = tempVelDen.w;
+
+
+
+
+
+
+
+
+
+	// Compute Vorticity.
+	//vec3 w = curl(tempVel);	// 직접 함수 만들어줘야함. curl내장함수같은건 없는듯. 인접 thread에 접근하는 연산을 쓰기 때문. 그런 연산을 쓰는 내장함수는 없는듯.
+	vec3 w = vectorCurlVelTemp(index);
+
+	
+
+
+
+
+
+
+
+
+	///////// imageStore
+	//vec4 tempVorticity = vec4(w.xyz, 0.0);
+	imageStore(inout_currentVorticity, index.xyz, vec4(w.xyz, 0.0));
+	
+}

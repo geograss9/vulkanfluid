@@ -1,0 +1,158 @@
+#version 450
+#pragma optionNV (unroll all)
+
+
+
+layout(binding = 0) uniform UniformBufferObject {
+	mat4 model;
+	mat4 view;
+	mat4 proj;
+	float deltaTime;
+} ubo;
+
+
+
+layout (binding=5, rgba32f) uniform readonly image3D in_lastVelocityDensity;			// last frame image.
+layout (binding=6, rgba32f) uniform writeonly image3D out_currentVelocityDensity;		// current frame image.
+layout (binding=7, rgba32f) uniform writeonly image3D out_currentVelocityDensityTemp;		// current frame temp image.
+
+layout (binding=8, rgba32f) uniform readonly image3D in_lastDivergencePressure;			// last frame image.
+layout (binding=9, rgba32f) uniform writeonly image3D out_currentDivergencePressure;	// current frame image.
+layout (binding=10, rgba32f) uniform writeonly image3D out_currentDivergencePressureTemp;	// current frame temp image.
+
+layout (binding=11, r8i) uniform iimage3D inout_BC;										// last frame image.
+
+layout (binding=2, r32f) uniform writeonly image3D out_density;			// density.
+
+
+
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+
+
+// https://en.wikipedia.org/wiki/Smoothstep
+float smootherStep(float x) 
+{
+	float edge0 = 0.0f; 
+	float edge1 = 1.0f;
+
+	// scale, and clamp x to 0~1 range.
+	x = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+
+    return x * x * x * (3 * x * (2 * x - 5) + 10.0f);
+}
+void main() {
+
+	//// Global Size.
+	uvec3 globalSize;
+	globalSize.x =  gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+	globalSize.y =  gl_NumWorkGroups.y * gl_WorkGroupSize.y;
+	globalSize.z =  gl_NumWorkGroups.z * gl_WorkGroupSize.z;
+
+	//// Unnormalized Coordinates.
+	ivec3 index = ivec3(gl_GlobalInvocationID);
+	//ivec3 index_original = index;
+	int left = index.x - 1;
+	int right = index.x + 1;
+	int up = index.y + 1;
+	int down = index.y - 1;
+	int front = index.z - 1;
+	int back = index.z + 1;
+
+	//// Normalized Coordinates.
+	vec3 globalPos = vec3( float(index.x) / globalSize.x, float(index.y) / globalSize.y, float(index.z) / globalSize.z );
+	globalPos *= 2.0;
+	globalPos -= 1.0;
+
+	// etc parameters
+	float velScale = float(globalSize.x);
+	float buoyancyScale = 0.001;
+
+	
+
+	///////// imageLoad
+	//// tempVel에 구체적인 값을 넣어줄 때에는 항상, -1 ~ 1 범위숫자로 넣어주고, 
+	//// 이를 Advection 단계의 index.xyz에 적용할 때에는, tempVel에 360을 곱해서 계산적용할 것! 
+	//// 아니 그냥 이렇게 자동으로 처리되도록, tempVel에 velScale을 곱해서 적용되도록 코딩처리함.
+	int tempBC = imageLoad(inout_BC, index.xyz).r;
+
+	vec4 tempVelDen = imageLoad(in_lastVelocityDensity, index.xyz);
+	vec3 tempVel = tempVelDen.xyz;		
+	float tempDen = tempVelDen.w;
+
+	vec4 tempDiverPressure = imageLoad(in_lastDivergencePressure, index.xyz);
+	float tempDiver = tempDiverPressure.x;
+	float tempPressure = tempDiverPressure.w;
+
+
+
+
+
+
+
+
+
+	///////// tempBC
+	tempBC = 0;
+
+	if (	 index.x <= 0  ||  index.x >= int(globalSize.x - 1)
+		 ||  index.y <= 0  ||  index.y >= int(globalSize.y - 1)
+		 ||  index.z <= 0  ||  index.z >= int(globalSize.z - 1) )
+	{
+		tempBC = -1;	// Dirichlet boundary condition.
+		tempDen = 0.0;
+
+	}
+
+
+
+	///////// Sourcing
+	vec3 srcCenter = vec3(-0.95, 0.0, 0.0);
+	float srcRadius = 0.15;
+	float dist_from_sourcing = length(globalPos - srcCenter);
+	if ( dist_from_sourcing < srcRadius ) 
+	{
+		tempDen = 1.0;
+        //tempDen = max(smootherStep(1.0 - dist_from_sourcing), tempDen);
+		tempVel = vec3(0.4, 0.0, 0.0);
+	} 
+
+
+
+	///////// Object
+    vec3 objCenter = vec3(-0.6, 0.0, 0.0);
+    float objRadius = 0.2;
+    float dist_from_Obj = length(globalPos - objCenter);
+	if (dist_from_Obj < objRadius) {
+		tempBC = -2;	// Neumann boundary condition.
+		tempVel = vec3(0, 0, 0);		// 멈춰있는 물체, 로 인한, 멈춰있는 속도장.
+        //tempDen = 0.0;
+	}
+
+
+
+	///////// buoyancy
+	float buoyancy = 1.0;
+    tempVel += tempDen * (ubo.deltaTime * velScale * buoyancyScale) * (-1) * vec3(0, buoyancy, 0) ;
+
+
+
+
+
+
+
+
+	///////// imageStore
+	imageStore(inout_BC, index.xyz, ivec4(tempBC));
+
+	tempVelDen = vec4(tempVel.xyz, tempDen.x);
+	imageStore(out_currentVelocityDensity, index.xyz, tempVelDen);
+	imageStore(out_currentVelocityDensityTemp, index.xyz, tempVelDen);
+
+	imageStore(out_density, index.xyz, vec4(tempDen));
+
+	tempDiverPressure = vec4(tempDiver.x, tempDiverPressure.yz, tempPressure.x);
+	imageStore(out_currentDivergencePressure, index.xyz, tempDiverPressure);
+	imageStore(out_currentDivergencePressureTemp, index.xyz, tempDiverPressure);
+
+}
