@@ -123,12 +123,27 @@ void main() {
     vec3 objCenter = vec3(-0.6, 0.0, 0.0);
     float objRadius = 0.2;
     float dist_from_Obj = length(globalPos - objCenter);
+
 	if (dist_from_Obj < objRadius) {
-		tempBC = -2;	// Neumann boundary condition.
-		tempVel = vec3(0, 0, 0);		// ¸ØÃçÀÖ´Â ¹°Ã¼, ·Î ÀÎÇÑ, ¸ØÃçÀÖ´Â ¼ÓµµÀå.
-        //tempDen = 0.0;
+		tempBC = -2;					// Neumann boundary condition.
+		tempVel = vec3(0, 0, 0);			// ¸ØÃçÀÖ´Â ¹°Ã¼, ·Î ÀÎÇÑ, ¸ØÃçÀÖ´Â ¼ÓµµÀå.
+		//tempDen = 0.0;
 	}
 
+//	if (globalPos.x > -0.4) {
+//	if (globalPos.x < 0.4) 	{
+//		if (globalPos.y > -0.4) {
+//		if (globalPos.y < 0.4) 	{
+//	       		if (globalPos.z > -0.4) {
+//			if (globalPos.z < 0.4) 	{
+//				tempBC = -2;			// Neumann boundary condition.
+//				tempVel = vec3(0, 0, 0);
+//			}
+//			}
+//		}
+//		}
+//	}
+//	}
 
 
 	///////// buoyancy

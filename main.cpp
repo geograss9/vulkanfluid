@@ -1,12 +1,12 @@
-//#define VK_USE_PLATFORM_WIN32_KHR	// surface ¸¸µé¶§, platform-specificÇÑ ¹æ¹ýÀ» »ç¿ëÇÏµç, glfw·Î ¹Ù·Î»ý¼ºÇÏ´Â ¹æ¹ýÀ» »ç¿ëÇÏµç, ÇØÁà¾ßÇÔ.
+//#define VK_USE_PLATFORM_WIN32_KHR	// surface ï¿½ï¿½ï¿½é¶§, platform-specificï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, glfwï¿½ï¿½ ï¿½Ù·Î»ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 #include <vulkan/vulkan.hpp>
 //#include </usr/include/vulkan/vulkan.hpp>
 
-#define GLFW_INCLUDE_VULKAN		// Áö±Ý±îÁö, ÀÌ ¸ÞÅ©·Î Á¤ÀÇ ¾ÈÇØµµ, Àß µÇ¾úÀ½.
+#define GLFW_INCLUDE_VULKAN		// ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Øµï¿½, ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½.
 #include <GLFW/glfw3.h>
 //#include </usr/include/GLFW/glfw3.h>
-//#define GLFW_EXPOSE_NAIVE_WIN32	// surface ¸¸µé¶§, platform-specificÇÑ ¹æ¹ýÀ» »ç¿ëÇÏµç, glfw·Î ¹Ù·Î»ý¼ºÇÏ´Â ¹æ¹ýÀ» »ç¿ëÇÏµç, ÇØÁà¾ßÇÔ.
-//#include <GLFW/glfw3native.h>		// surface ¸¸µé¶§, platform-specificÇÑ ¹æ¹ýÀ» »ç¿ëÇÏµç, glfw·Î ¹Ù·Î»ý¼ºÇÏ´Â ¹æ¹ýÀ» »ç¿ëÇÏµç, ÇØÁà¾ßÇÔ.
+//#define GLFW_EXPOSE_NAIVE_WIN32	// surface ï¿½ï¿½ï¿½é¶§, platform-specificï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, glfwï¿½ï¿½ ï¿½Ù·Î»ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+//#include <GLFW/glfw3native.h>		// surface ï¿½ï¿½ï¿½é¶§, platform-specificï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, glfwï¿½ï¿½ ï¿½Ù·Î»ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ïµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 //#include </usr/include/GLFW/glfw3native.h>
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
@@ -29,7 +29,7 @@ const bool gl_enableValidationLayers = false;
 const bool gl_enableValidationLayers = true;
 #endif
 std::vector<const char*> gl_validationLayers = {
-	"VK_LAYER_KHRONOS_validation"			// µ¿ÀÏÇÑ ´ë¹®ÀÚ¸¸À¸·Î ±¸¼ºµÈ enumÀº ¾È¸¸µçµí.
+	"VK_LAYER_KHRONOS_validation"			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ë¹®ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ enumï¿½ï¿½ ï¿½È¸ï¿½ï¿½ï¿½ï¿½.
 };
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallbackFunc(VkDebugUtilsMessageSeverityFlagBitsEXT debugSeverity,
@@ -49,9 +49,9 @@ static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallbackFunc(VkDebugUtilsMessageSever
 
 
 
-#include <optional>			// ÀÌ ÀÚ·áÇüÀº surface¿¡ È£È¯µÇ´Â queueFamilyIndex¸¦ Ã£±â À§ÇØ °ÅÀÇ »ç¿ëÇÏ°Ô µÉ¼ö¹Û¿¡¾ø´Â ÀÚ·áÇüÀÌ´Ù.
+#include <optional>			// ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ surfaceï¿½ï¿½ È£È¯ï¿½Ç´ï¿½ queueFamilyIndexï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½É¼ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 #include <bitset>
-#include <set>				// queueFamilyIndex°¡ °ãÄ¡Áö ¾Ê°Ô, queueCreateInfo¸¦ »ý¼ºÇÏ±âÀ§ÇÑ, ÀÚ·áÇü.
+#include <set>				// queueFamilyIndexï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ê°ï¿½, queueCreateInfoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ú·ï¿½ï¿½ï¿½.
 
 #include <fstream>
 // #include <shaderc/shaderc.hpp>
@@ -65,11 +65,11 @@ static void framebufferResizeCallbackFunc(GLFWwindow* window, int width, int hei
 
 
 //#include <array>
-#define GLM_FORCE_RADIANS			// ÇÔ¼öµéÀÇ ÀÎ¼ö·Î, radianÀ» ¹Þµµ·ÏÇÏ´Â ¸ÞÅ©·ÎÀÎµí.
+#define GLM_FORCE_RADIANS			// ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½ï¿½ï¿½, radianï¿½ï¿½ ï¿½Þµï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½Îµï¿½.
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE	// GLM will use the OpenGL depth range of -1.0 to 1.0 by default. We need to configure it to use the Vulkan range of 0.0 to 1.0 using the GLM_FORCE_DEPTH_ZERO_TO_ONE definition.
 #include <glm/glm.hpp>
 struct Vertex {
-	alignas(16) glm::vec3 pos;		// alignas(16)¿¡¼­ 16Àº byte¸¦ ÀÇ¹ÌÇÔ.
+	alignas(16) glm::vec3 pos;		// alignas(16)ï¿½ï¿½ï¿½ï¿½ 16ï¿½ï¿½ byteï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 	alignas(16) glm::vec4 color;
 	alignas(16) glm::vec2 texCoord;
 };
@@ -98,15 +98,15 @@ struct UniformBufferObject {
 
 
 
-// uniform buffer ¾÷µ¥ÀÌÆ®¿¡ ÇÊ¿äÇÑ Çì´õÆÄÀÏµé.
-#include <glm/gtc/matrix_transform.hpp>		// glm::rotate()ÇÔ¼ö ¾²·Á¸é, ÀÌ°Å include ÇØ¾ßÇÔ.	// we can use GLM_FORCE_RADIANS to force all GLM functions to adopt radians.
-#include <glm/gtx/string_cast.hpp>			// mat4 ¹®ÀÚ·Î Ãâ·ÂÇØÁÖ´Â ÇÔ¼ö include ÇÏ±â À§ÇÔ.
+// uniform buffer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½.
+#include <glm/gtc/matrix_transform.hpp>		// glm::rotate()ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì°ï¿½ include ï¿½Ø¾ï¿½ï¿½ï¿½.	// we can use GLM_FORCE_RADIANS to force all GLM functions to adopt radians.
+#include <glm/gtx/string_cast.hpp>			// mat4 ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ include ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½.
 #include <chrono>
 
 
 
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb/stb_image.h>
+#include "stb/stb_image.h"
 
 
 
@@ -114,7 +114,7 @@ struct UniformBufferObject {
 #include <random> 		// #include "/usr/include/c++/13/random"
 #define PARTICLE_COUNT (256)
 struct Particle {
-	alignas(16)	glm::vec3 position;		// ¹Ýµå½Ã paddingÀ» ¸ÂÃâ°Í. ¸ÂÃß´Ï±î ¸ðµç particleÀÇ position ¾÷µ¥ÀÌÆ®°¡ ´Ù ÀßµÇ³×. (ÆÐµù¾ÈÇßÀ»¶§´Â ÀÏºÎ ÆÄÆ¼Å¬¸¸ ÀÌ»óÇÏ°Ô ¿òÁ÷¿´À½.)
+	alignas(16)	glm::vec3 position;		// ï¿½Ýµï¿½ï¿½ paddingï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ß´Ï±ï¿½ ï¿½ï¿½ï¿½ particleï¿½ï¿½ position ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ßµÇ³ï¿½. (ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ïºï¿½ ï¿½ï¿½Æ¼Å¬ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.)
 	alignas(16)	glm::vec4 color;
 	alignas(16)	glm::vec3 velocity;
 };
@@ -216,46 +216,46 @@ private:
 		// get required + user-requested extensions
 		// get matched extensions with Vulkan-supporting extensions
 		// get matched user-requested ValidationLayers with VulkanExtension-providing ValidationLayers.
-		// DebugCallbackFunc¸¦ ¸¸µé°í,
-		// ÀÌ ÇÔ¼ö¸¦, instance¿Í ¸µÅ©½ÃÅ³ ÇÔ¼ö¸¦ ¸¸µç´Ù. (vkCreateDebugUtilsMessenterEXT°¡ È®ÀåÇÔ¼ö¶ó, instance¿Í ¹Ù·Î ¿¬°á½ÃÄÑÁÖ¸é¼­ »ý¼ºÇØÁÖ´Â ÇÔ¼ö°¡ ¾Æ´Ï´Ù.)
+		// DebugCallbackFuncï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½,
+		// ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½, instanceï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Å³ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½. (vkCreateDebugUtilsMessenterEXTï¿½ï¿½ È®ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½, instanceï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸é¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Æ´Ï´ï¿½.)
 		setupDebugCallback();
-		// Vulkan°´Ã¼»ý¼º ¹æ½ÄÀ¸·Î, Surface¸¦ ¸¸µé±â À§ÇØ¼­´Â, Ãß°¡·Î header files¸¦ ´õ includeÇÏ´Â ¹æ¹ýµµ ÀÖ´Ù.
-		//			platform-specific extension (OSÈ¯°æ¿¡ ¸Â´Â, VulkanÀÇ 'È®Àå±â´É', Áï 'VK_KHR_win32_surface')À» ÀÌ¿ëÇÏ¿© suface¸¦ »ý¼ºÇÏ´Â ¹æ¹ýµµ ÀÖÀ¸³ª, ( ÀÌ°æ¿ì, 'glfwGetRequiredInstanceExtensions' (instance»ý¼ºÇÒ¶§ ¹Þ¾Ò´ø extensionÁ¤º¸).¸¦ ÀÌ¿ëÇÏ°í, ´õ includeÇØ¾ßÇÒ headerÆÄÀÏÀÌ ÀÖ´Ù. )
-		//			SOÈ¯°æ »ó°ü¾øÀÌ ±¸¾Ö¹ÞÁö¾Ê°í, ¾îµð¼­µç, glfwCreateWindowSurface¸¦ ÀÌ¿ëÇØ »ý¼ºÇÒ¼öµµ ÀÖ´Ù.
-		//			platform-specific extensionÀ» »ç¿ëÇØ, surface¸¦ »ý¼ºÇÏ´Â ¹æ½ÄÀ», glfw°¡, ÀÚµ¿À¸·Î Ã³¸®ÇØÁÖ´Â °³³äÀÌ´Ù.
+		// Vulkanï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½, ï¿½ß°ï¿½ï¿½ï¿½ header filesï¿½ï¿½ ï¿½ï¿½ includeï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
+		//			platform-specific extension (OSÈ¯ï¿½æ¿¡ ï¿½Â´ï¿½, Vulkanï¿½ï¿½ 'È®ï¿½ï¿½ï¿½ï¿½', ï¿½ï¿½ 'VK_KHR_win32_surface')ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ sufaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ( ï¿½Ì°ï¿½ï¿½, 'glfwGetRequiredInstanceExtensions' (instanceï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½Þ¾Ò´ï¿½ extensionï¿½ï¿½ï¿½ï¿½).ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï°ï¿½, ï¿½ï¿½ includeï¿½Ø¾ï¿½ï¿½ï¿½ headerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. )
+		//			SOÈ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ê°ï¿½, ï¿½ï¿½ð¼­µï¿½, glfwCreateWindowSurfaceï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
+		//			platform-specific extensionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, glfwï¿½ï¿½, ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 		createSurface();
-		// createSurface()ÇÏ´Â °Í ÀÚÃ¼°¡, instance¿¡ ÀÇÇØ, surface°¡ »ý¼ºµÇ´Â °ÍÀÌ¹Ç·Î, instnace°¡ ´ç¿¬È÷ surface¸¦ Áö¿øÇÏ´Â °ÍÀ» ÀÇ¹ÌÇÔ.
-		// ÈÄ¿¡ physicalDevice°¡ pickµÇ¸é, Physical Device¿¡ ÀÇÇØ, surface°¡ Áö¿øµÇ´ÂÁöµµ È®ÀÎÇØº¸¾Æ¾ß ÇÑ´Ù. (presentation support by Queue Families)
+		// createSurface()ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½, instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½, instnaceï¿½ï¿½ ï¿½ç¿¬ï¿½ï¿½ surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
+		// ï¿½Ä¿ï¿½ physicalDeviceï¿½ï¿½ pickï¿½Ç¸ï¿½, Physical Deviceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Øºï¿½ï¿½Æ¾ï¿½ ï¿½Ñ´ï¿½. (presentation support by Queue Families)
 
 		// Enumerate Physical Devices.
-		//			vkEnumeratePhysicalDevices()ÇÔ¼ö »ç¿ëÇÒ¶§, instance°¡ ¸µÅ©°¡´ÉÇÑ PhysicalDevice¸¦ Ã£¾Æ ³ª¿­ÇÏ´Â °ÍÀÌ¹Ç·Î, 
-		//			±×¶§ ÀÌ¹Ì PhysicalDevice°¡ instance¿Í ¸µÅ©µÇ¾î¼­, instance°¡ destroyµÉ¶§, PhysicalDeviceµµ °°ÀÌ ÀÚµ¿À¸·Î ¹ÝÈ¯µÇ´Âµí.
+		//			vkEnumeratePhysicalDevices()ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½, instanceï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PhysicalDeviceï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì¹Ç·ï¿½, 
+		//			ï¿½×¶ï¿½ ï¿½Ì¹ï¿½ PhysicalDeviceï¿½ï¿½ instanceï¿½ï¿½ ï¿½ï¿½Å©ï¿½Ç¾î¼­, instanceï¿½ï¿½ destroyï¿½É¶ï¿½, PhysicalDeviceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ç´Âµï¿½.
 		// get properties and features of each physical devices.
 		pickPhysicalDevice();
 		// find QueueFamil'ies' on the picked physical device. 
 		//			create struct for Queue Family index. 'findQueueFamilies' function's returnType is 'struct'.
-		// 			find QueueFamilyIndices()ÇÔ¼ö¿¡¼­´Â, queueFamilyIndex°ªÀ» Áßº¹À¸·Î Ã£¾Æ, QFIndices¿¡ ³ÖÀ»¼öÀÖÀ¸³ª,
-		// vkDeviceQueueCreateInfo¿¡¼­´Â, ¹Ý¸é, °¢ queue´Â, ±× queueFamilyIndex°ªÀÌ ¼­·Î ´Þ¶ó¾ß ÇÑ´Ù. Áßº¹µÈ queueFamilyIndex°ªÀ» °¡Áö¸é ¾ÈµÈ´Ù. (Each queue must have a unique queueFamilyIndex within pQueueCreateInfos.) 
-		// vkDeviceCreateInfo  (QueueCreateInfoµéÀÌ °¢°¢ÀÇ ¿ø¼ÒÀÎ ¹è¿­ÀÇ Æ÷ÀÎÅÍ¸¦ ¿©±â¿¡ ³Ö¾îÁØ´Ù.)
-		//			device¸¸µé¶§, device¾È¿¡ ÀÖÀ» Queueµéµµ °°ÀÌ ÇÑ²¨¹ø¿¡ Á¤ÇØÁÖ°í, ¸¸µé°ÔµÈ´Ù.
+		// 			find QueueFamilyIndices()ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, queueFamilyIndexï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½, QFIndicesï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,
+		// vkDeviceQueueCreateInfoï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ý¸ï¿½, ï¿½ï¿½ queueï¿½ï¿½, ï¿½ï¿½ queueFamilyIndexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ ï¿½Ñ´ï¿½. ï¿½ßºï¿½ï¿½ï¿½ queueFamilyIndexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÈ´ï¿½. (Each queue must have a unique queueFamilyIndex within pQueueCreateInfos.) 
+		// vkDeviceCreateInfo  (QueueCreateInfoï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½Ö¾ï¿½ï¿½Ø´ï¿½.)
+		//			deviceï¿½ï¿½ï¿½é¶§, deviceï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Queueï¿½éµµ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½ÔµÈ´ï¿½.
 		createDevice();
 		// get a queue handle.
-		// Physical Device¿¡ ÀÇÇØ, surface°¡ Áö¿øµÇ´ÂÁöµµ È®ÀÎÇØº¸¾Æ¾ß ÇÑ´Ù. (presentation support by Queue Families)
-		// ÈÄ¿¡, ½º¿ÒÃ¼ÀÎ ¸¸µé¶§, device extension info ³Ö´Â ÀÚ¸®¿¡, ½º¿ÒÃ¼ÀÎ extension Ãß°¡.
+		// Physical Deviceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, surfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Øºï¿½ï¿½Æ¾ï¿½ ï¿½Ñ´ï¿½. (presentation support by Queue Families)
+		// ï¿½Ä¿ï¿½, ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½é¶§, device extension info ï¿½Ö´ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ extension ï¿½ß°ï¿½.
 		
 		createCommandPool();
-		// command poolÀÌ ¸¸µé¾îÁö°Ô µÊÀ¸·Î½á, resource³ª data¸¦ ¸¸µé¶§, Àá±ñÀá±ñ¾¿ ÀÓ½Ã·Î »ç¿ëÇÒ command buffer¸¦ ¸¸µé¾î »ç¿ëÇÏ°í È¸¼öÇÏµµ·Ï ÁC¼öÀÖ°ÔµÇ¾ú´Ù.
+		// command poolï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, resourceï¿½ï¿½ dataï¿½ï¿½ ï¿½ï¿½ï¿½é¶§, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ command bufferï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ È¸ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Cï¿½ï¿½ï¿½Ö°ÔµÇ¾ï¿½ï¿½ï¿½.
 				
 		// Checking for if swapchain device extension is supported.
 		// if so, then, enable(turn on) the swapchain device extension, at the createDeviceInfo
 		// Querying details of swap chain support.
-		// À§¿¡¼­ queryÇØ¼­ ¾òÀº µ¥ÀÌÅÍ¸¦ swchCreateInfo¿¡ ³ÖÀº ÈÄ,
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ queryï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ swchCreateInfoï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½,
 		createSwapChain();
 		// Retrieve the handles of the VkImages in the Swapchain.
-		createSwapChainImageViews();	// °¢ image¸¶´Ù, ±×¿¡ ´ëÀÀÇÏ´Â imageView¸¦ ¸¸µç´Ù.
+		createSwapChainImageViews();	// ï¿½ï¿½ imageï¿½ï¿½ï¿½ï¿½, ï¿½×¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ imageViewï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 		
 		//
-		// °¢Á¾ ¹öÆÛ¸¦ ¸¸µå´Â °úÁ¤¿¡¼­, commandBuffer¸¦ ¾²±â ¶§¹®¿¡(Æ¯È÷ copyBuffer ¸í·É¾î), Àû¾îµµ createCommandPool(); ÀÌÈÄ¿¡ ¾Æ·¡ ÇÔ¼öµéÀÌ À§Ä¡ÇØ¾ß ÇÑ´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, commandBufferï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Æ¯ï¿½ï¿½ copyBuffer ï¿½ï¿½ï¿½É¾ï¿½), ï¿½ï¿½ï¿½îµµ createCommandPool(); ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½Æ·ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 		createUniformBuffer();
 		createDepthResources();
 		//////
@@ -283,43 +283,43 @@ private:
 		//
 
 		// createAttachment();
-		// createAttachmentRef();	// attachment°¡ attachmentRef¸¦ ±¸¼ºÇÑ´Ù.
-		// createSubPass();			// SubpassÀÇ pAttachments µ¥ÀÌÅÍ·Î, attachment°¡ ¾Æ´Ñ, attachmentRef µ¥ÀÌÅÍ°¡ µé¾î°£´Ù! 
-		// SubpassDependency ÀÛ¼º.
-		createRenderPass();			// pAttachments µ¥ÀÌÅÍ·Î, attachment µ¥ÀÌÅÍ°¡ µé¾î°£´Ù.		// ¿©±â µé¾î°£ attachment array(pAttachment)ÀÇ ¿ø¼Ò¼ø¼­ ¹× ÀÎµ¦½º¸¦ ±âÁØÀ¸·Î, attachmentRef°¡ attament¸¦ ÂüÁ¶ÇÑ´Ù.
+		// createAttachmentRef();	// attachmentï¿½ï¿½ attachmentRefï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		// createSubPass();			// Subpassï¿½ï¿½ pAttachments ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½, attachmentï¿½ï¿½ ï¿½Æ´ï¿½, attachmentRef ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½î°£ï¿½ï¿½! 
+		// SubpassDependency ï¿½Û¼ï¿½.
+		createRenderPass();			// pAttachments ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½, attachment ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½î°£ï¿½ï¿½.		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°£ attachment array(pAttachment)ï¿½ï¿½ ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, attachmentRefï¿½ï¿½ attamentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 
-		// °¢ ÇÁ·¹ÀÓ¸¶´Ù ÇÑÀå¾¿ÀÇ ÀÌ¹ÌÁö ¹× ÀÌ¹ÌÁöºä°¡ ³ª¿À°í, ±× °¢°¢ÀÇ ÀÌ¹ÌÁö¸¦ ³ÖÀ»¼öÀÖµµ·Ï, ÇÁ·¹ÀÓ¹öÆÛ¸¦ °¢°¢ µû·Î ¸¸µç´Ù.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½å¾¿ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ä°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 		createFrameBuffers();
 
 		//createDescriptorSetLayout();
-		createPipelineLayout();		// pipelineLayoutÀº descriptorSetLayout°ú È£È¯µÇ¾î¾ßÇÑ´Ù. µû¶ó¼­ descriptorSetLayoutÀÌ ¸¸µé¾îÁøÈÄ, pipelineLayoutÀÌ ¸¸µé¾îÁ®¾ßÇÒ°ÍÀÌ´Ù.
-		// compute pipelineÀº ¿©·¯´Ü°èÀÇ compute shader stage ¸¦ °¡Áú¼ö ¾ø°í, ´Ü ÇÏ³ªÀÇ compute shader (stage)¸¸À» °¡Áú¼öÀÖ´Ù.
+		createPipelineLayout();		// pipelineLayoutï¿½ï¿½ descriptorSetLayoutï¿½ï¿½ È£È¯ï¿½Ç¾ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½ï¿½ï¿½ï¿½ descriptorSetLayoutï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, pipelineLayoutï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò°ï¿½ï¿½Ì´ï¿½.
+		// compute pipelineï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½ï¿½ï¿½ compute shader stage ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ compute shader (stage)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½.
 		createComputePipelines();	
-		// viewport¿Í scissor ¼³Á¤. viewportState ¼³Á¤.
-		// dynamic state ¼³Á¤.
-		// VertexInput State ¼³Á¤.
-		// InputAssembly State ¼³Á¤.
-		// Rasterization State ¼³Á¤.
-		// Multisample State ¼³Á¤.
-		// BlendAttachment State ¹× BlendState(CreateInfo) ¼³Á¤.
-		// shaderc include ÇØ¼­ »ç¿ëÇÏ±â. spir-v ÄÄÆÄÀÏÇÏ°í shaderModule ¸¸µé¾î ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö ¸¸µé±â.
-		// shader Module ¹× shaderStage ¼³Á¤.
-		// GraphicsPipelineCreateInfo¿¡ À§ Á¤º¸µé ¸ðµÎ ³Ö°í, »ý¼º.
+		// viewportï¿½ï¿½ scissor ï¿½ï¿½ï¿½ï¿½. viewportState ï¿½ï¿½ï¿½ï¿½.
+		// dynamic state ï¿½ï¿½ï¿½ï¿½.
+		// VertexInput State ï¿½ï¿½ï¿½ï¿½.
+		// InputAssembly State ï¿½ï¿½ï¿½ï¿½.
+		// Rasterization State ï¿½ï¿½ï¿½ï¿½.
+		// Multisample State ï¿½ï¿½ï¿½ï¿½.
+		// BlendAttachment State ï¿½ï¿½ BlendState(CreateInfo) ï¿½ï¿½ï¿½ï¿½.
+		// shaderc include ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½. spir-v ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ shaderModule ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
+		// shader Module ï¿½ï¿½ shaderStage ï¿½ï¿½ï¿½ï¿½.
+		// GraphicsPipelineCreateInfoï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½.
 		createGraphicsPipeline();
 		createGraphicsPipeline2();
 
 		createCommandBuffer();
-		// commandBufferObject¸¦ ¸¸µé°í, commandBufferMemory¸¦ ÇÒ´çÇÏ°í, Object¿Í Memory¸¦ ÇÒ´çÇØ¾ßÇÑ´Ù.
-		// command buffer¿¡ ¸í·É¾î¸¦ ÀÔ·ÂÇÏ±â À§ÇØ¼­´Â, vkBeginCommandBuffer()ÇÔ¼ö¿Í vkEndCommandBuffer()ÇÔ¼ö »çÀÌ¿¡¼­, ¸í·É¾î¸¦ ÀÔ·ÂÇÏ´Â ÇÔ¼ö¸¦ ½ÇÇà½ÃÄÑ¾ßÇÑ´Ù.
-		// vkCmd ·Î ½ÃÀÛÇÏ´Â ÇÔ¼öµéÀ» ÅëÇØ, command buffer¿¡, ¸í·É¾îµéÀ» ÀÔ·ÂÇÏµµ·Ï ÇÑ´Ù.
-		// compute pipelineÀ» ¼öÇàÇÏ´Â ¸í·É¾î´Â, 'BeginRenderPass¿Í BeginRenderPass »çÀÌ'¿¡ À§Ä¡ÇÏ¸é ¾ÈµÇ´Ù. ¿À·ù³­´Ù.
-		// graphics pipelineÀ» ¼öÇàÇÏ´Â ¸í·É¾î´Â, 'BeginRenderPass¿Í BeginRenderPass »çÀÌ'¿¡ À§Ä¡ÇØ¾ß ÇÏ´Â µí!
-		// transfer pipeline stage¸¦ ¼öÇàÇÏ´Â ¸í·É¾î´Â, 'BeginRenderPass¿Í BeginRenderPass »çÀÌ' ¾ÈÀÌµç ¹ÛÀÌµç, ÀÚÀ¯·Ó°Ô À§Ä¡ÇÒ¼ö ÀÖ´Â µíÇÏ´Ù.
-		//recordCommandBuffer		// drawFrame()ÇÔ¼öÀÇ º¸Á¶ÇÔ¼ö·Î À§Ä¡½ÃÅ°°í ÀÛ¼º.
+		// commandBufferObjectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, commandBufferMemoryï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Ï°ï¿½, Objectï¿½ï¿½ Memoryï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½.
+		// command bufferï¿½ï¿½ ï¿½ï¿½ï¿½É¾î¸¦ ï¿½Ô·ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½, vkBeginCommandBuffer()ï¿½Ô¼ï¿½ï¿½ï¿½ vkEndCommandBuffer()ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½É¾î¸¦ ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ñ´ï¿½.
+		// vkCmd ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, command bufferï¿½ï¿½, ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
+		// compute pipelineï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½É¾ï¿½ï¿½, 'BeginRenderPassï¿½ï¿½ BeginRenderPass ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï¸ï¿½ ï¿½ÈµÇ´ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		// graphics pipelineï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½É¾ï¿½ï¿½, 'BeginRenderPassï¿½ï¿½ BeginRenderPass ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ø¾ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½!
+		// transfer pipeline stageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½É¾ï¿½ï¿½, 'BeginRenderPassï¿½ï¿½ BeginRenderPass ï¿½ï¿½ï¿½ï¿½' ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Ìµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ ï¿½ï¿½Ä¡ï¿½Ò¼ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½.
+		//recordCommandBuffer		// drawFrame()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Û¼ï¿½.
 
 		createSyncObject();
 
-		//// ¾Æ·¡ ÇÔ¼ö´Â mainLoop()ÇÔ¼ö ¾È¿¡ µé¾î°¡¾ßÇÔ.
+		//// ï¿½Æ·ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ mainLoop()ï¿½Ô¼ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ï¿½ï¿½.
 		////updateUniformBuffer();
 		////recordCommandBuffer();
 		//drawFrame();
@@ -334,13 +334,13 @@ private:
 // Functions in mainLoop() //////////////////////////////////////////////////////////////////////
 private:	 
 	void updateUniformBuffer(uint32_t inFlightFrame) {
-		// ÁÖ·Î uniformBuffer data¸¦ ¾÷µ¥ÀÌÆ® ÇÔ.
+		// ï¿½Ö·ï¿½ uniformBuffer dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½.
 
 		auto currentTime = std::chrono::high_resolution_clock::now();
 		//std::chrono::time_point<std::chrono::high_resolution_clock> currentTime = std::chrono::high_resolution_clock::now();
 		
 		//static std::chrono::steady_clock::time_point startTime = currentTime;
-		static std::chrono::system_clock::time_point startTime = currentTime;		// ÃÊ±âÈ­ ÇÒ¶§¸¸ °ªÀÌ µé¾î°¨.
+		static std::chrono::system_clock::time_point startTime = currentTime;		// ï¿½Ê±ï¿½È­ ï¿½Ò¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¨.
 		static float time = 0;
 		
 
@@ -373,7 +373,7 @@ private:
 		VkCommandBufferBeginInfo comBuffBeginInfo{};
 		comBuffBeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 		comBuffBeginInfo.flags = 0;							// optional.	// The flags parameter specifies how we're going to use the command buffer. 
-		//comBuffBeginInfo.pInheritanceInfo = nullptr;		// optional.	// ÀÌ ÆÄ¶ó¹ÌÅÍ´Â, ÇØ´ç Begin ÇÏ´Â ¹öÆÛ°¡, second buffer ÀÏ¶§, ÀÇ¹ÌÀÖ´Â Á¤º¸.
+		//comBuffBeginInfo.pInheritanceInfo = nullptr;		// optional.	// ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, ï¿½Ø´ï¿½ Begin ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Û°ï¿½, second buffer ï¿½Ï¶ï¿½, ï¿½Ç¹ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
 		if (vkBeginCommandBuffer(commandBuffer, &comBuffBeginInfo) != VK_SUCCESS) {
 			throw std::runtime_error("failed to begin ComBuff.");
@@ -500,8 +500,8 @@ private:
 			renderPassBeginInfo.renderArea.extent = this->swapChainExtent;
 			renderPassBeginInfo.renderArea.offset = { 0, 0 };
 			//
-			// clearÇØ¾ßÇÒ attachment°¡, colorAttachment¿Í depthAttachment·Î, ÀÌ·¸°Ô °¢°¢ 2°³ µû·Î ÀÖÀ¸¹Ç·Î,
-			// VkClearValue°´Ã¼µµ, °¢°¢ÀÇ Attachment¿¡ ´ëÀÀÇØ, µû·Î ¸¸µé¾î ³Ö¾îÁÖ¾î¾ß ÇÑ´Ù.
+			// clearï¿½Ø¾ï¿½ï¿½ï¿½ attachmentï¿½ï¿½, colorAttachmentï¿½ï¿½ depthAttachmentï¿½ï¿½, ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½,
+			// VkClearValueï¿½ï¿½Ã¼ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Attachmentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
 				std::array<VkClearValue, 2> clearValues;	//  = { clearValue0, clearValue1 };
 					VkClearValue clearValue0; clearValue0.color = { 0.0f, 0.0f, 0.0f, 0.0f };
 											  //clearValue1.depthStencil = { 1.0f, 0 };
@@ -516,9 +516,9 @@ private:
 			renderPassBeginInfo.framebuffer = framebuffers[imageIndex];
 			// The imageIndex refers to the VkImage in our swapChainImages array.
 
-			// ¾Æ·¡ÀÇ viewport Å©±â Á¤º¸ÀÔ·ÂÇÏ´Â ÄÚµå¸¦ ÁÖ¼®Ã³¸®ÇÏ¸é, window resizeÇØµµ È­¸éÅ©±â°¡ ¾Èº¯ÇÏ°ÔµÇ°í, 
-			// ÁÖ¼®Ã³¸® ¾ÈÇÏ¸é, ¸ÅÇÁ·¹ÀÓ¸¶´Ù »õ·Î¿î window resize Å©±â°¡ swapChainÀÇ »ý¼ºÅ©±â¸¦ °áÁ¤ÇÏ¿©, 
-			// °á±¹ ±×°Ô viewport Å©±âÀÇ º¯È­·Î ÀÌ¾îÁø´Ù. 
+			// ï¿½Æ·ï¿½ï¿½ï¿½ viewport Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ï´ï¿½ ï¿½Úµå¸¦ ï¿½Ö¼ï¿½Ã³ï¿½ï¿½ï¿½Ï¸ï¿½, window resizeï¿½Øµï¿½ È­ï¿½ï¿½Å©ï¿½â°¡ ï¿½Èºï¿½ï¿½Ï°ÔµÇ°ï¿½, 
+			// ï¿½Ö¼ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ window resize Å©ï¿½â°¡ swapChainï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å©ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, 
+			// ï¿½á±¹ ï¿½×°ï¿½ viewport Å©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½. 
 			viewport.x = 0.0f;
 			viewport.y = 0.0f;
 			viewport.width = static_cast<float>(swapChainExtent.width);
@@ -549,7 +549,7 @@ private:
 			
 
 
-			// vkCmdClearAttachments()ÇÔ¼ö´Â renderPass ¾È¿¡¼­ ½ÇÇàµÉ¼öÀÖÀ½!
+			// vkCmdClearAttachments()ï¿½Ô¼ï¿½ï¿½ï¿½ renderPass ï¿½È¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½!
 			VkClearValue clearDepthValue{};
 			clearDepthValue.depthStencil.depth = 1.0f;
 
@@ -600,108 +600,108 @@ private:
 
 	}
 	void drawFrame() {
-		// 0. ÀÌÀü ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀÌ °ÅÀÇ ³¡³ª°¡¸é, 
-		// 1. ´ÙÀ½(ÀÌ¹ø) ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀ» ÁØºñ(´ÙÀ½ÇÁ·¹ÀÓÀÇ imageIndex ¹Þ¾Æ¿À±â, uniformBuffer ¾÷µ¥ÀÌÆ®, commandBufferÀÇ ÀÛ¼º, Á¦Ãâ)ÇÏ°í,
-		//		ÀÌ¶§, interruptºñ½ÁÇÏ°Ô, window°¡ resizeµÇ´Â ¸Þ½ÃÁö°¡ ¿À¸é, ÀÌ¿¡ ¿µÇâÀ» ¹Þ´Â, swapChain¿¡¼­ imageIndex¸¦ ¹Þ¾Æ¿À´Â ºÎºÐÀ», Àß Ã³¸®ÇÏ´Â ºÎºÐ ¸¸µé¾î¾ß ÇÔ.
-		// 2. ÀÌÀü ÇÁ·¹ÀÓÀÇ ·£´õ¸µ °á°úimage¸¦, framebuffer? swapChain? À¸·Î presentÇØ¾ßÇÑ´Ù.
-		//		ÀÌ¶§, interruptºñ½ÁÇÏ°Ô, window°¡ resizeµÇ´Â ¸Þ½ÃÁö°¡ ¿À¸é, ÀÌ¿¡ ¿µÇâÀ» ¹Þ´Â, presentation´Ü°è¸¦, Àß Ã³¸®ÇÏ´Â ºÎºÐ ¸¸µé¾î¾ß ÇÔ.
-		std::cout << std::endl;		// ·Î±× Ãâ·Â¿ë  ÇÑÁÙ ¶ç¾î¾²±â.
+		// 0. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+		// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ imageIndex ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½, uniformBuffer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®, commandBufferï¿½ï¿½ ï¿½Û¼ï¿½, ï¿½ï¿½ï¿½ï¿½)ï¿½Ï°ï¿½,
+		//		ï¿½Ì¶ï¿½, interruptï¿½ï¿½ï¿½ï¿½Ï°ï¿½, windowï¿½ï¿½ resizeï¿½Ç´ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½, swapChainï¿½ï¿½ï¿½ï¿½ imageIndexï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½, ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Îºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		// 2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½imageï¿½ï¿½, framebuffer? swapChain? ï¿½ï¿½ï¿½ï¿½ presentï¿½Ø¾ï¿½ï¿½Ñ´ï¿½.
+		//		ï¿½Ì¶ï¿½, interruptï¿½ï¿½ï¿½ï¿½Ï°ï¿½, windowï¿½ï¿½ resizeï¿½Ç´ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½, presentationï¿½Ü°è¸¦, ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Îºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		std::cout << std::endl;		// ï¿½Î±ï¿½ ï¿½ï¿½Â¿ï¿½  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î¾²ï¿½ï¿½.
 
 
 
-		// 0. ÀÌ fence°¡ setµÇ¸é(°ªÀÌ 1ÀÌµÇ¸é), "ÀÌÀü ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀÌ °ÅÀÇ ³¡³ª°¡´Â »óÈ²."À» ÀÇ¹ÌÇÏ°ÔµÊ. Áï, ÀÌÀüÇÁ·¹ÀÓÀÇ °á°úimage°¡ presentµÇ±â ½ÃÀÛÇÏ´Â »óÈ². ±×·¯³ª ¾ÆÁ÷ swapChainÀÌ È­¸é¿¡ Ãâ·ÂÀ» ½ÃÀÛÇÏÁö´Â ¾ÊÀº »óÈ²ÀÎµí.
+		// 0. ï¿½ï¿½ fenceï¿½ï¿½ setï¿½Ç¸ï¿½(ï¿½ï¿½ï¿½ï¿½ 1ï¿½ÌµÇ¸ï¿½), "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²."ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½Ï°Ôµï¿½. ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½imageï¿½ï¿½ presentï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È². ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ swapChainï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½Îµï¿½.
 		vkWaitForFences(this->device, 1, &(this->inFlightFences[this->inFlightFrame]), VK_TRUE, UINT64_MAX);
 
 
 
-		// 1. ´ÙÀ½(ÀÌ¹ø) ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀ» ÁØºñ(´ÙÀ½ÇÁ·¹ÀÓÀÇ imageIndex ¹Þ¾Æ¿À±â)
+		// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ imageIndex ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½)
 		uint32_t imageIndex;
 		// The iamgeIndex refers to the VkImage in our swapChainImages array.
-		// Á¤È®È÷´Â, ÀÌ¹ÌÁö¸¦ ¾òÀ¸·Á°í ÇÏ´Â°Ô ¾Æ´Ï¶ó, ´ÙÀ½ ÇÁ·¹ÀÓ¿¡ image°¡ µé¾î°¥ indexÀÚ¸®¸¦ ¾Ë¾Æ³»±â À§ÇØ, ÇÏ´Â°Å³×.
+		// ï¿½ï¿½È®ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Â°ï¿½ ï¿½Æ´Ï¶ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ imageï¿½ï¿½ ï¿½ï¿½î°¥ indexï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ï´Â°Å³ï¿½.
 		VkResult result = vkAcquireNextImageKHR(this->device, this->swapChain,
 			UINT64_MAX, this->imageAvailableSemaphores[this->inFlightFrame],
 			VK_NULL_HANDLE, &imageIndex);
 
-		// window°¡ resizeµÇ¸é, swapChainÀ» recreateµÇµµ·Ï ÇÑ ºÎºÐ.
+		// windowï¿½ï¿½ resizeï¿½Ç¸ï¿½, swapChainï¿½ï¿½ recreateï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îºï¿½.
 		// VK_ERROR_OUT_OF_DATE_KHR: The swap chain has become incompatible with the surface and can no longer be used for rendering. Usually happens after a window resize.
 		// VK_SUBOPTIMAL_KHR: The swap chain can still be used to successfully present to the surface, but the surface properties are no longer matched exactly.
 		if (result == VK_ERROR_OUT_OF_DATE_KHR) {
 			recreateSwapChain();
-			return;		// returnÇÔÀ¸·Î½á, ÀÌ¹ø ÇÁ·¹ÀÓÀ» ´Ù½Ã ÁøÇàÇÏ±â. (ÀÌ¹ø ÇÁ·¹ÀÓÀ» Æ÷±âÇÏÁö ¾ÊÀ½.)
+			return;		// returnï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½. (ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.)
 		}
 		else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
 			throw std::runtime_error("failed to recreate swapChain and get images.");
 		}
 
-		// À§ ÄÚµåºí·° ¾Õ¿¡ ÀÌ fence¸¦ reset½ÃÅ°´Â ÄÚµå°¡ ÀÖÀ¸¸é, 
-		// swapchainÀ» recreateÇÑ ÈÄ, ºÎ°úµÇ´Â ÀÏ ¾øÀÌ, ¹Ù·Î ´Ù½Ã fence¸¦ waitÇÏ°Ô µÇ±â ¶§¹®¿¡, 
-		// ºÎ°úµÈ ÀÏÀÌ ¾ø¾î¼­, ¿µ¿øÈ÷ fence°¡ 1·Î setµÇÁö ¾Ê´Â ÀÏÀÌ ¹ß»ýÇÑ´Ù.
-		// ÀÌ ¶§¹®¿¡, recreate swapChainÀ» ÇÑÈÄ, fence¸¦ 0À¸·Î resetÇÏ°Ô ÄÚµùÇÔÀ¸·Î½á, ¹«ÇÑwait¸¦ ¸·µµ·Ï ÇÑ°Í.
+		// ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½ï¿½ fenceï¿½ï¿½ resetï¿½ï¿½Å°ï¿½ï¿½ ï¿½Úµå°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+		// swapchainï¿½ï¿½ recreateï¿½ï¿½ ï¿½ï¿½, ï¿½Î°ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ù·ï¿½ ï¿½Ù½ï¿½ fenceï¿½ï¿½ waitï¿½Ï°ï¿½ ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+		// ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¼­, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ fenceï¿½ï¿½ 1ï¿½ï¿½ setï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ñ´ï¿½.
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, recreate swapChainï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, fenceï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ resetï¿½Ï°ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, ï¿½ï¿½ï¿½ï¿½waitï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½.
 		vkResetFences(this->device, 1, &(this->inFlightFences[this->inFlightFrame]));
 
 
 
-		// 1. ´ÙÀ½(ÀÌ¹ø) ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀ» ÁØºñ(°¢Á¾ Buffer, Image data ¾÷µ¥ÀÌÆ®)
+		// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½(ï¿½ï¿½ï¿½ï¿½ Buffer, Image data ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®)
 		updateUniformBuffer(this->inFlightFrame);
 
 
 
-		// 1. ´ÙÀ½(ÀÌ¹ø) ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀ» ÁØºñ(commandBufferÀÇ ÀÛ¼º)
+		// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½(commandBufferï¿½ï¿½ ï¿½Û¼ï¿½)
 		vkResetCommandBuffer(this->gctCommandBuffers[this->inFlightFrame], 0);
 
-		// command buffer ¸¦ (recodrf ¸¦) begin ½ÃÅ°±âÀ§ÇØ, CommandBufferBeginInfo¸¦ ÀÛ¼ºÇÑ´Ù.±× ÈÄ ½ÃÀÛÇÑ´Ù.
-		// renderPass ¸¦ Begin ÇÑ´Ù.
-		// vkCmd ·Î ½ÃÀÛÇÏ´Â ÇÔ¼öµé·Î, command buffer¿¡, ¸í·ÉµéÀ» ÀÔ·ÂÇÑ´Ù.
+		// command buffer ï¿½ï¿½ (recodrf ï¿½ï¿½) begin ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, CommandBufferBeginInfoï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ñ´ï¿½.ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		// renderPass ï¿½ï¿½ Begin ï¿½Ñ´ï¿½.
+		// vkCmd ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½, command bufferï¿½ï¿½, ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ñ´ï¿½.
 		recordCommandBuffer(this->gctCommandBuffers[this->inFlightFrame], imageIndex);
 
 
 
-		// 1. ´ÙÀ½(ÀÌ¹ø) ÇÁ·¹ÀÓÀÇ ·£´õ¸µÀ» ÁØºñ(commandBufferÀÇ Á¦Ãâ)
+		// 1. ï¿½ï¿½ï¿½ï¿½(ï¿½Ì¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øºï¿½(commandBufferï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 		VkSubmitInfo submitInfo{};
 		submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 		submitInfo.commandBufferCount = 1;
 		submitInfo.pCommandBuffers = &(this->gctCommandBuffers[this->inFlightFrame]);
 		//
 		// a pointer to an array of VkSemaphore handles upon which to wait before the command buffers for this batch begin execution.
-		// submitµÈ queueÀÛ¾÷µéÀÌ ½ÃÀÛµÇ±â Àü¿¡, setµÇ¾îÀÖ¾î¾ßÇÒ semaphore.
+		// submitï¿½ï¿½ queueï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÛµÇ±ï¿½ ï¿½ï¿½ï¿½ï¿½, setï¿½Ç¾ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ semaphore.
 		submitInfo.waitSemaphoreCount = 1;
 		submitInfo.pWaitSemaphores = &(this->imageAvailableSemaphores[this->inFlightFrame]);
-		//// queue°¡ submitµÇ±â Àü¿¡, ÀÛ¾÷ÀÌ ³¡³ªÀÖ¾î¾ßÇÒ stage.
+		//// queueï¿½ï¿½ submitï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ stage.
 		VkPipelineStageFlags WaitDstStages[] = { VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT };
-		//// VkPipelineStageFlags´Â enum¼ýÀÚ°ªÀ» ´ã´Â º¯¼ö, VkPipelineStageFlagBits´Â enum¼ýÀÚ°ª(enum constant).
+		//// VkPipelineStageFlagsï¿½ï¿½ enumï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, VkPipelineStageFlagBitsï¿½ï¿½ enumï¿½ï¿½ï¿½Ú°ï¿½(enum constant).
 		submitInfo.pWaitDstStageMask = WaitDstStages;
 		//
 		// a pointer to an array of VkSemaphore handles which will be signaled when the command buffers for this batch have completed execution.
-		// submitµÈ queueÀÛ¾÷µéÀÌ ´Ù ¿Ï·áµÇ¸é, setÇÒ semaphore.
+		// submitï¿½ï¿½ queueï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï·ï¿½Ç¸ï¿½, setï¿½ï¿½ semaphore.
 		submitInfo.signalSemaphoreCount = 1;
-		submitInfo.pSignalSemaphores = &(this->renderFinishedSemaphores[this->inFlightFrame]);	// Áï, submitµÈ command buffer ¿¡ ÀÔ·ÂµÈ ¸í·ÉÀÌ ´Ù ½ÇÇà¿Ï·áµÇ¸é, signal setµÉ semaphore¸¦ ÁöÁ¤ÇÑ´Ù!
+		submitInfo.pSignalSemaphores = &(this->renderFinishedSemaphores[this->inFlightFrame]);	// ï¿½ï¿½, submitï¿½ï¿½ command buffer ï¿½ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï·ï¿½Ç¸ï¿½, signal setï¿½ï¿½ semaphoreï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½!
 
 		// The last parameter references an optional fence that will be signaled when the command buffers finish execution.
 		// This allows us to know when it is safe for the command buffer to be reused.
 		if (vkQueueSubmit(this->Queues[0], 1, &submitInfo, this->inFlightFences[this->inFlightFrame]) != VK_SUCCESS) {
 			throw std::runtime_error("failed to submit the command buffer.");
 		}	std::cout << "command buffer is submitted." << std::endl;
-		// this->Queues[0]´Â graphicsQueueFamilyÀÇ queue¸¦ ÀÇ¹ÌÇÔ.
+		// this->Queues[0]ï¿½ï¿½ graphicsQueueFamilyï¿½ï¿½ queueï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 
 
 
-		// 2. ÀÌÀü ÇÁ·¹ÀÓÀÇ ·£´õ¸µ °á°úimage¸¦, framebuffer? swapChain? À¸·Î presentÇÏ´Â ´Ü°è.
-		// present ¶õ, pipelineÀÌ ÀÏ ¿Ï·áÁ™À»¶§, submitting the result back to the swap chain. ÇÏ´Â °ÍÀ» ¸»ÇÔ.
-		// ±×·±µ¥, present ½ÇÇàÀº, CPU°¡ GPU¿¡ ¸ÅÇÁ·¹ÀÓ¸¶´Ù µû·Î ½ÅÈ£¸¦ Áà¼­, È­¸é¿¡ Ãâ·ÂÇÏ°Ô ÇÏ´Â °Å¿´¾î? GPU°¡ °è¼Ó ¾Ë¾Æ¼­ Ãâ·ÂÇÏ´Â°Ô ¾Æ´Ï°í?
-		// ±×°Ô ¾Æ´Ï¶ó¸é, ¿Ö, ¿Ö ¸ÅÇÁ·¹ÀÓ drawFrame()ÇÔ¼ö°¡ ½ÇÇàµÉ¶§¸¶´Ù, ¾Æ·¡ ÄÚµå°¡ ½ÇÇàµÇ°Ô, ÄÚµå¸¦ ÀÛ¼ºÇÏÁö?
+		// 2. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½imageï¿½ï¿½, framebuffer? swapChain? ï¿½ï¿½ï¿½ï¿½ presentï¿½Ï´ï¿½ ï¿½Ü°ï¿½.
+		// present ï¿½ï¿½, pipelineï¿½ï¿½ ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, submitting the result back to the swap chain. ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		// ï¿½×·ï¿½ï¿½ï¿½, present ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, CPUï¿½ï¿½ GPUï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½à¼­, È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ï´ï¿½ ï¿½Å¿ï¿½ï¿½ï¿½? GPUï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½Æ´Ï°ï¿½?
+		// ï¿½×°ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½, ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ drawFrame()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Æ·ï¿½ ï¿½Úµå°¡ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½, ï¿½Úµå¸¦ ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½?
 		VkPresentInfoKHR presentInfo{};
 		presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
 		presentInfo.swapchainCount = 1;
 		presentInfo.pSwapchains = &(this->swapChain);
 		presentInfo.pImageIndices = &imageIndex;
-		// the number of semaphores to wait for before issuing the present request. ¸Õ¸»ÀÎÁö Âü...
-		// Áï, °á°úÀÌ¹ÌÁö¸¦ swapChainÀ¸·Î Á¦ÃâÇÏ±â Àü¿¡, waitÀ¸·Î ¼³Á¤µÇ¾îÀÖ¾î¾ß ÇÒ, semaphoreµéÀ» ¼³Á¤ÇÏ´Â°Ô ¸Â´Â °Í °°³×... 
+		// the number of semaphores to wait for before issuing the present request. ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½...
+		// ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ swapChainï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½, waitï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½ï¿½, semaphoreï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½Â´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½... 
 		presentInfo.waitSemaphoreCount = 1;
 		presentInfo.pWaitSemaphores = &(this->renderFinishedSemaphores[this->inFlightFrame]);
-		presentInfo.pResults = nullptr;		// swapChainÀÌ presentation ¼º°øÇÏ¸é VK_SUCCESS ·Î ¼³Á¤ÇÒ, VkResultÇü º¯¼ö¸¦ ³Ö¾îÁÖ¸é µÊ. ÇÊ¿ä¾øÀ¸¸é,  nullptr·Î.
+		presentInfo.pResults = nullptr;		// swapChainï¿½ï¿½ presentation ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ VK_SUCCESS ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, VkResultï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½. ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,  nullptrï¿½ï¿½.
 
-		// window resizing ¶§¹®¿¡, vkQueuePresentKHR °¡ Àß ¼öÇàµÇÁö ¾Ê¾Ò´Ù¸é, 
-		// swapChain recreateÇÏ°í, ´ÙÀ½ ÇÁ·¹ÀÓÀ¸·Î ³Ñ¾î°¡±â.
+		// window resizing ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, vkQueuePresentKHR ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Ù¸ï¿½, 
+		// swapChain recreateï¿½Ï°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½.
 		result = vkQueuePresentKHR(this->Queues[0], &presentInfo);
 		if (result == VK_ERROR_OUT_OF_DATE_KHR
 			|| result == VK_SUBOPTIMAL_KHR
@@ -709,7 +709,7 @@ private:
 		{
 			framebufferResized = false;
 			recreateSwapChain();
-			// return ÇÏÁö ¾ÊÀ½À¸·Î½á, ´ÙÀ½ ÇÁ·¹ÀÓÀ¸·Î ³Ñ¾î°¡±â.
+			// return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½.
 		}
 		else if (result == VK_SUCCESS) {
 			std::cout << "image is presented to swapChain" << std::endl;
@@ -722,7 +722,7 @@ private:
 
 
 
-		// ´ÙÀ½ inFlight Frame ¼ö(index) °è»ê.
+		// ï¿½ï¿½ï¿½ï¿½ inFlight Frame ï¿½ï¿½(index) ï¿½ï¿½ï¿½.
 		this->inFlightFrame = (this->inFlightFrame + 1) % MAX_FRAMES_IN_FLIGHT;
 	}
 	////
@@ -916,7 +916,7 @@ private:
 		std::set<uint32_t> uniqueQueueFamilyIndices = { QFIndices.graphicsQueueFamilyIndex.value(),
 														QFIndices.presentQueueFamilyIndex.value(),
 														QFIndices.computeQueueFamilyIndex.value() };
-		std::vector<float> queueFamilyPriorities;		// vector¿¡ const ÀÚ·áÇüÀº ¿ø¼ÒÀÇ ÀÚ·áÇüÀ¸·Î ÇÒ´ç ¸øÇØÁÖ³×
+		std::vector<float> queueFamilyPriorities;		// vectorï¿½ï¿½ const ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ï¿½
 		queueFamilyPriorities.resize(uniqueQueueFamilyIndices.size(), 1.0f);
 		
 		std::vector<VkDeviceQueueCreateInfo> dQueueCreateInfos;
@@ -926,7 +926,7 @@ private:
 			dQueueCreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
 			dQueueCreateInfo.queueFamilyIndex = uniqueQueueFamilyIndex;
 			dQueueCreateInfo.queueCount = 1;
-			// queueFamilyPriorities.push_back(1.0f);	// ÀÌ·¸°Ô ÇÏ¸é for¹® ¹Û¿¡¼­ ÇÒ´çÇß´ø ¿ø¼ÒÀÇ ¸Þ¸ð¸®°¡ »ç¶óÁö´Âµí. ÀÚ²Ù Priorities°ª ¹üÀ§ ³Ñ¾ú´Ù°í ¿À·ù ¶ß³×.
+			// queueFamilyPriorities.push_back(1.0f);	// ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ forï¿½ï¿½ ï¿½Û¿ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ð¸®°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½. ï¿½Ú²ï¿½ Prioritiesï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß³ï¿½.
 			dQueueCreateInfo.pQueuePriorities = &queueFamilyPriorities[i];
 			dQueueCreateInfos.push_back(dQueueCreateInfo);
 			i++;
@@ -943,15 +943,15 @@ private:
 		// Previous implementations of Vulkan made a distinction between instance and device specific validation layers, 
 		// but this is no longer the case. That means that the enabledLayerCount and ppEnabledLayerNames fields of VkDeviceCreateInfo are ignored by up - to - date implementations.
 		// However, it is still a good idea to set them anyway to be compatible with older implementations :
-		// °á·Ð: instance¸¸µé¶§ ±âÀÔÇÑ Á¤º¸ÀÌ´Ï, device ¸¸µé¶§µµ Áßº¹ÀûÀ¸·Î ±âÀÔÇÒ ÇÊ¿ä¾ø´Â µí?
-		// ÇÏÁö¸¸, °ãÄ¡Áö¾Ê´Â extension. VL´Â Ãß°¡ÇØÁà¾ß°ÚÁö. ¿¹) "VK_KHR_swapchain"
+		// ï¿½ï¿½ï¿½: instanceï¿½ï¿½ï¿½é¶§ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½, device ï¿½ï¿½ï¿½é¶§ï¿½ï¿½ ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½?
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½Ê´ï¿½ extension. VLï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½. ï¿½ï¿½) "VK_KHR_swapchain"
 		deviceCreateInfo.enabledExtensionCount = static_cast<uint32_t>(userRequDeviceExtensions.size());
 		deviceCreateInfo.ppEnabledExtensionNames = userRequDeviceExtensions.data();
 		//deviceCreateInfo.enabledLayerCount;			
 		//deviceCreateInfo.ppEnabledLayerNames;
 		//
-		// Each queue must have a unique queueFamilyIndex within pQueueCreateInfos. (°¢ queue´Â, ±× queueFamilyIndex°ªÀÌ ¼­·Î ´Þ¶ó¾ß ÇÑ´Ù. Áßº¹µÈ queueFamilyIndex°ªÀ» °¡Áö¸é ¾ÈµÈ´Ù. ) 
-		// Áï, The 'queueFamilyIndex' member of each element of pQueueCreateInfos 'must be unique' within pQueueCreateInfos
+		// Each queue must have a unique queueFamilyIndex within pQueueCreateInfos. (ï¿½ï¿½ queueï¿½ï¿½, ï¿½ï¿½ queueFamilyIndexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¶ï¿½ï¿½ ï¿½Ñ´ï¿½. ï¿½ßºï¿½ï¿½ï¿½ queueFamilyIndexï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÈ´ï¿½. ) 
+		// ï¿½ï¿½, The 'queueFamilyIndex' member of each element of pQueueCreateInfos 'must be unique' within pQueueCreateInfos
 		deviceCreateInfo.queueCreateInfoCount = static_cast<uint32_t>(dQueueCreateInfos.size());
 		std::cout << std::endl << std::endl << "number of created unique queue family: " << dQueueCreateInfos.size() << std::endl;	// for test.
 		deviceCreateInfo.pQueueCreateInfos = dQueueCreateInfos.data();
@@ -959,7 +959,7 @@ private:
 		VkPhysicalDeviceProperties PhyDeProperties{};
 		vkGetPhysicalDeviceProperties(this->physicalDevice, &PhyDeProperties);
 		std::cout << "PhyDeProperties maxBoundDescriptorSets: " << PhyDeProperties.limits.maxBoundDescriptorSets << std::endl;
-		// ³» ±×·¡ÇÈÄ«µå¿¡¼± 32°³¶ó°í ³ª¿È.
+		// ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½Ä«ï¿½å¿¡ï¿½ï¿½ 32ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		//
 		VkPhysicalDeviceFeatures PhyDeFeatures{};		// this is difference from PhyDeFeatures in isSuitable() function.
 		vkGetPhysicalDeviceFeatures(this->physicalDevice, &PhyDeFeatures);
@@ -974,8 +974,8 @@ private:
 
 
 		// get queue handles.
-		// ³» ±×·¡ÇÈÄ«µå¿¡¼­´Â queueFamily°¡ ÇÏ³ª¸¸ ¼±ÅÃµÉ°Å±â ¶§¹®¿¡, queueµµ ÇÏ³ª¸¸ »ý¼ºµÉ °ÍÀÓ.
-		// ÀÌ ÇÏ³ªÀÇ queue·Î graphics, compute, transit ´Ù ÇÔ.
+		// ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½Ä«ï¿½å¿¡ï¿½ï¿½ï¿½ï¿½ queueFamilyï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÃµÉ°Å±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, queueï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		// ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ queueï¿½ï¿½ graphics, compute, transit ï¿½ï¿½ ï¿½ï¿½.
 		Queues.resize(uniqueQueueFamilyIndices.size());
 		uint32_t j = 0;
 		for (const auto& uniqueQueueFamilyIndex : uniqueQueueFamilyIndices) {
@@ -986,12 +986,12 @@ private:
 	}
 
 	void createCommandPool() {
-		// QueueÀÇ °æ¿ì¿Í´Â ´Ù¸£°Ô, commandBuffer´Â, ¼­·Î´Ù¸¥ µÎ commandBuffer °£¿¡µµ, ¼­·Î°°Àº(Áßº¹µÇ´Â) queueFamilyIndex¸¦ °¡Áú¼öÀÖ´Ù.
+		// Queueï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½, commandBufferï¿½ï¿½, ï¿½ï¿½ï¿½Î´Ù¸ï¿½ ï¿½ï¿½ commandBuffer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½(ï¿½ßºï¿½ï¿½Ç´ï¿½) queueFamilyIndexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½.
 
 		VkCommandPoolCreateInfo gctCommandPoolInfo{};
 		gctCommandPoolInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
 		gctCommandPoolInfo.queueFamilyIndex = QFIndices.graphicsQueueFamilyIndex.value();
-		// ¸ÅÇÁ·¹ÀÓ¹Ì´Ù command buffer ´Ù½Ã record ÇØÁÙ °Å¶ó¸é, ¾Æ·¡ ÇÃ·¡±×·Î ¼³Á¤ÇØÁà¾ßÇÔ. VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¹Ì´ï¿½ command buffer ï¿½Ù½ï¿½ record ï¿½ï¿½ï¿½ï¿½ ï¿½Å¶ï¿½ï¿½, ï¿½Æ·ï¿½ ï¿½Ã·ï¿½ï¿½×·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT
 		gctCommandPoolInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
 
 		if (vkCreateCommandPool(this->device, &gctCommandPoolInfo, nullptr, &(this->gctCommandPool))
@@ -1014,9 +1014,9 @@ private:
 
 			swapChainFormat = VK_FORMAT_B8G8R8A8_SRGB;
 
-			//swchCreateInfo.imageUsage = surfaceCapabilInfo.supportedUsageFlags; ÇÏ°í 
-			// VK_FORMAT_B8G8R8A8_SRGB »ç¿ëÇÏ¸é ¿À·ù³².
-			// ±×³É VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT ¾µ°Í.
+			//swchCreateInfo.imageUsage = surfaceCapabilInfo.supportedUsageFlags; ï¿½Ï°ï¿½ 
+			// VK_FORMAT_B8G8R8A8_SRGB ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+			// ï¿½×³ï¿½ VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT ï¿½ï¿½ï¿½ï¿½.
 
 			int tempWidth = 0;
 			int tempHeight = 0;
@@ -1033,7 +1033,7 @@ private:
 			swchCreateInfo.surface = this->surface;
 			swchCreateInfo.minImageCount = swapChainImageCount;
 			swchCreateInfo.presentMode = VK_PRESENT_MODE_MAILBOX_KHR;
-			// recreate swapChain ½Ã¿¡, resizingÀÌ Àß Å©±âÀüÈ¯ÀÌ µÇ°Ô ÇÏ·Á¸é ÀÌºÎºÐ°ú, ±âÅ¸ surfaceÁ¤º¸ ¾ò¾î¿À´Â ºÎºÐÀ» Àß ÄÚµùÈ÷¾ß ÇÏ´Â µí?¤¤
+			// recreate swapChain ï¿½Ã¿ï¿½, resizingï¿½ï¿½ ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½È¯ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ÌºÎºÐ°ï¿½, ï¿½ï¿½Å¸ surfaceï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½?ï¿½ï¿½
 			swchCreateInfo.preTransform = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;	// = 0x00000001
 			swchCreateInfo.clipped = VK_TRUE;
 			swchCreateInfo.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
@@ -1065,7 +1065,7 @@ private:
 			vkGetSwapchainImagesKHR(this->device, this->swapChain, &swapChainImageCount, this->swapChainImages.data());
 
 			std::cout << "swapChain and " << swapChainImageCount << " swapChainImages are created" << std::endl;
-			// swapChainImageCount = 3 ÀÌ ³ª¿È.
+			// swapChainImageCount = 3 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	}
 	void createSwapChainImageViews() {
 
@@ -1110,7 +1110,7 @@ private:
 		colorAttachment.format = swapChainFormat;
 		colorAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
 		// initialLayout is the layout the attachment image subresource will be in when a render pass instance begins.
-		colorAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;		// VK_IMAGE_LAYOUT_UNDEFINED  ¾îÂ¥ÇÇ clearµÉ°Å´Ï±î don't careÀÓ.
+		colorAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;		// VK_IMAGE_LAYOUT_UNDEFINED  ï¿½ï¿½Â¥ï¿½ï¿½ clearï¿½É°Å´Ï±ï¿½ don't careï¿½ï¿½.
 		// finalLayout is the layout the attachment image subresource will be transitioned to when a render pass instance ends.
 		colorAttachment.finalLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
 		// value specifying how the contents of color and depth components of the attachment are treated at the beginning of the subpass where it is first used.
@@ -1122,14 +1122,14 @@ private:
 		VkAttachmentReference colorAttachmentRef{};
 		// attachment is either an integer value identifying an attachment at the corresponding index in VkRenderPassCreateInfo::pAttachments, or VK_ATTACHMENT_UNUSED to signify that this attachment is not used.
 		colorAttachmentRef.attachment = 0;
-		colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;		// glsl¿¡¼­ ³ª¿À´Â layout°ú´Â, ´Ù¸¥ °³³äÀÇ image layoutÀÌ´Ù!
+		colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;		// glslï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ layoutï¿½ï¿½ï¿½ï¿½, ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ image layoutï¿½Ì´ï¿½!
 
 
 
 		VkAttachmentDescription depthAttachment{};
 		depthAttachment.format = this->depthFormat;
 		depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
-		depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;		// È¤Àº VK_IMAGE_LAYOUT_UNDEFINED	// Ã³À½¿¡ attachment ¸¸µé¶§¿¡´Â, Æ¯º°ÇÑ ÀÌÀ¯¾øÀ¸¸é, ¹«Á¶°Ç VK_IMAGE_LAYOUT_UNDEFINED·Î ½ÃÀÛÇØ¾ß ÇÏ´Â µí.  
+		depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;		// È¤ï¿½ï¿½ VK_IMAGE_LAYOUT_UNDEFINED	// Ã³ï¿½ï¿½ï¿½ï¿½ attachment ï¿½ï¿½ï¿½é¶§ï¿½ï¿½ï¿½ï¿½, Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ VK_IMAGE_LAYOUT_UNDEFINEDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½.  
 		depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
 		depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
 		depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
@@ -1147,7 +1147,7 @@ private:
 		subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
 		subpass.colorAttachmentCount = 1;
 		subpass.pColorAttachments = &colorAttachmentRef;
-		//subpass.depthStencilAttachmentCount´Â ¹«Á¶°Ç 1°³¾¿ ¹Û¿¡ ¸øµé¾î°¡¼­, ¾ÖÃÊ¿¡ Count°¡ ÀÖÀ» ÇÊ¿ä°¡ ¾ø´Âµí.
+		//subpass.depthStencilAttachmentCountï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½î°¡ï¿½ï¿½, ï¿½ï¿½ï¿½Ê¿ï¿½ Countï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½Âµï¿½.
 		subpass.pDepthStencilAttachment = &depthAttachmentRef;
 		//subpass.inputAttachmentCount;
 		//subpass.pInputAttachments;
@@ -1159,22 +1159,22 @@ private:
 
 
 
-		//VkDependencyInfo dependencyInfo{};		// ÀÌ°Å´Â VkSubpassDependencyInfo ¿Í´Â ´Ù¸¥°ÍÀÓ! ÀÌ°Å´Â, specifying dependency information for a synchronization command.
-		// SubpassDependency´Â semaphor°³³ä°ú °ü·Ã¾ø´Â °ÍÀÓÀ» À¯ÀÇÇÒ °Í!
+		//VkDependencyInfo dependencyInfo{};		// ï¿½Ì°Å´ï¿½ VkSubpassDependencyInfo ï¿½Í´ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½! ï¿½Ì°Å´ï¿½, specifying dependency information for a synchronization command.
+		// SubpassDependencyï¿½ï¿½ semaphorï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!
 		VkSubpassDependency dependencyInfo{};
 		dependencyInfo.srcSubpass = VK_SUBPASS_EXTERNAL;
 		dependencyInfo.srcStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
 									  | VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT;
-		// µ¿ÀÏÇÑ ¸Þ¸ð¸®¸¦ °¡Áø attachmentÀÇ ÀÌ¹ÌÁö¿¡ ´ëÇØ¼­, src´Â read¸¦ Á™µç, write¸¦ Çßµç, ¸Þ¸ð¸®¿¡ ´ëÇØ ¾î¶²ÀÏÀ» ¼öÇàÁ™µç »ó°ü¾ø´Ù. µû¶ó¼­ 0ÀÌ´Ù. color attachment°¡ clearµÇµµ·Ï ¾Õ¿¡¼­ ¼³Á¤ÇßÀ¸¹Ç·Î, µû¶ó¼­ src´Â ÀÌ attachment¸¦ readÇÒ ÇÊ¿äµµ ¾ø´Ù!
-		// Áö±Ý ³»°¡ ¸¸µé·Á°íÇÏ´Â ¿¹Á¦»óÈ²¿¡¼­´Â, src(Àü) subPass°¡ dst(ÈÄ,ÇöÀç) subPass¿¡ µ¥ÀÌÅÍ¸¦ Àü´ÞÇÏ´Â »óÈ²ÀÌ ¾Æ´Ï¹Ç·Î, ÈÄSubPass°¡ ÀüSubPass·ÎºÎÅÍ ¹ÞÀ» input(srcAccess)ÀÌ ¾ø´Ù´Â ÀÇ¹Ì·Î, ÀÌ ÀÎÀÚ¸¦ 0À¸·Î ³Ö¾îµµ µÇ´Âµí.
-		// src subPass°¡, ÇØ´ç ¸Þ¸ð¸®(attachment image data)¿¡ Á¢±ÙÇØ ¾î¶² operationÀ» ¼öÇàÇßµç, 
-		// dst SubPass°úÁ¤À¸·Î ³Ñ¾î¿À¸é, ÇØ´ç memory´Â, attachment¿¡ »õ·Î loadµÇ¸é¼­, clearµÉ °ÍÀÌ±â ¶§¹®¿¡, (load op¼³Á¤¿¡ ÀÇÇØ clearÇÏ¶ó°í ¼³Á¤µÇ¾úÀ¸¹Ç·Î)
-		// ¼­·Î°£¿¡ Á¾¼Ó¼ºÀÌ ¾ø´Ù°í º¸´Â µí.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ð¸®¸ï¿½ ï¿½ï¿½ï¿½ï¿½ attachmentï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½, srcï¿½ï¿½ readï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, writeï¿½ï¿½ ï¿½ßµï¿½, ï¿½Þ¸ð¸®¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½î¶²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ 0ï¿½Ì´ï¿½. color attachmentï¿½ï¿½ clearï¿½Çµï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½, ï¿½ï¿½ï¿½ï¿½ srcï¿½ï¿½ ï¿½ï¿½ attachmentï¿½ï¿½ readï¿½ï¿½ ï¿½Ê¿äµµ ï¿½ï¿½ï¿½ï¿½!
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, src(ï¿½ï¿½) subPassï¿½ï¿½ dst(ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½) subPassï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È²ï¿½ï¿½ ï¿½Æ´Ï¹Ç·ï¿½, ï¿½ï¿½SubPassï¿½ï¿½ ï¿½ï¿½SubPassï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ input(srcAccess)ï¿½ï¿½ ï¿½ï¿½ï¿½Ù´ï¿½ ï¿½Ç¹Ì·ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾îµµ ï¿½Ç´Âµï¿½.
+		// src subPassï¿½ï¿½, ï¿½Ø´ï¿½ ï¿½Þ¸ï¿½(attachment image data)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½î¶² operationï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½, 
+		// dst SubPassï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½, ï¿½Ø´ï¿½ memoryï¿½ï¿½, attachmentï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ loadï¿½Ç¸é¼­, clearï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, (load opï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ clearï¿½Ï¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ç·ï¿½)
+		// ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 		dependencyInfo.srcAccessMask = 0;	
 		dependencyInfo.dstSubpass = 0;
 		dependencyInfo.dstStageMask = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
 									  | VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT;
-		// µ¿ÀÏÇÑ ¸Þ¸ð¸®¸¦ °¡Áø attachmentÀÇ ÀÌ¹ÌÁö¿¡ ´ëÇØ¼­, dst´Â drawÇÑ ÀÌ¹ÌÁö¸¦, src°¡ °Çµå·È´ø ¸Þ¸ð¸®¿Í µ¿ÀÏÇÑ ¸Þ¸ð¸®ÀÎ color Attachment¿¡, writeÇÏ´Â °ÍÀ» ÀÏ·Î¼­ °¡Áö°íÀÖ´Â SubpassÀÌ´Ù. µû¶ó¼­ ±×´ë·Î Àû¾îÁÖ¸é µÈ´Ù. 
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ð¸®¸ï¿½ ï¿½ï¿½ï¿½ï¿½ attachmentï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½, dstï¿½ï¿½ drawï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½, srcï¿½ï¿½ ï¿½Çµï¿½È´ï¿½ ï¿½Þ¸ð¸®¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ color Attachmentï¿½ï¿½, writeï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·Î¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ Subpassï¿½Ì´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½È´ï¿½. 
 		dependencyInfo.dstAccessMask = VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT;
 		//dependencyInfo.dependencyFlags = 0;
 
@@ -1200,9 +1200,9 @@ private:
 	}
 
 	void createFrameBuffers() {
-		// °¢ imageView(attachmentµÉ) ¸¶´Ù framebuffer¸¦ ÇÏ³ª¾¿ ¸¸µå³×? ¿Ö ÀÌ·¸°Ô ºñÈ¿À²ÀûÀ¸·Î ¸¸µéÁö?
-		// ÇÏ³ªÀÇ framebuffer °¡ ¿©·¯ ÀÌ¹ÌÁö ÇÑ²¨¹ø¿¡ ´ãÀ»¼öÀÖ°Ô ¸¸µé¸é ¾ÈµÅ³ª?
-		// °¢ ÀÌ¹ÌÁö°¡ ¼­·Î ´Ù¸¥ ÇÁ·¹ÀÓ¿¡ ³ª¿Â ÀÌ¹ÌÁö¶ó¼­ ±×·±°¡?
+		// ï¿½ï¿½ imageView(attachmentï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ framebufferï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+		// ï¿½Ï³ï¿½ï¿½ï¿½ framebuffer ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ñ²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÅ³ï¿½?
+		// ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½?
 
 		(this->framebuffers).resize((this->swapChainImageViews).size());
 
@@ -1214,10 +1214,10 @@ private:
 			framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
 			framebufferCreateInfo.renderPass = this->renderPass;
 			framebufferCreateInfo.attachmentCount = static_cast<uint32_t>(imageToAttachments.size());
-			framebufferCreateInfo.pAttachments = imageToAttachments.data();	// ÀÌ¸§Àº pAttachments ·Î µÇ¾îÀÖÁö¸¸, a pointer to an array of 'VkImageView handles', ÀÌ´Ù. °ð attachment°¡ µÉ imageViews¶ó´Â ÀÇ¹Ì·Î ÀÌ·¸°Ô ÀÌ¸§ Á¤ÇÑµí.
+			framebufferCreateInfo.pAttachments = imageToAttachments.data();	// ï¿½Ì¸ï¿½ï¿½ï¿½ pAttachments ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, a pointer to an array of 'VkImageView handles', ï¿½Ì´ï¿½. ï¿½ï¿½ attachmentï¿½ï¿½ ï¿½ï¿½ imageViewsï¿½ï¿½ï¿½ ï¿½Ç¹Ì·ï¿½ ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Ñµï¿½.
 			framebufferCreateInfo.width = swapChainExtent.width;
 			framebufferCreateInfo.height = swapChainExtent.height;
-			framebufferCreateInfo.layers = 1;								// ±×³É ÀÌ¹ÌÁö ¸Þ¸ð¸®°ø°£ÀÇ 3Â÷¿ø ÀÎµ¦½º¶ó°í »ý°¢ÇÏ¸é µÈ´Ù.
+			framebufferCreateInfo.layers = 1;								// ï¿½×³ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Þ¸ð¸®°ï¿½ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
 		
 			if (vkCreateFramebuffer(this->device, &framebufferCreateInfo, nullptr, &(this->framebuffers)[i]) != VK_SUCCESS) {
 				throw std::runtime_error("failed to create framebuffers.");
@@ -1284,7 +1284,7 @@ private:
 		VkExtent3D swapChainExtent3D{ this->swapChainExtent.width, this->swapChainExtent.height, 1};
 		imgCreateInfo.extent = swapChainExtent3D;
 		imgCreateInfo.arrayLayers = 1;
-		// Physical device¿¡¼­, depth image formatÀ¸·Î, »ç¿ëÀÚ°¡ ÁöÁ¤ÇÑ formatÀ» Áö¿øÇÏ´ÂÁö, queryÇØº¸¾Æ¾ß ÇÑ´Ù.
+		// Physical deviceï¿½ï¿½ï¿½ï¿½, depth image formatï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ formatï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½, queryï¿½Øºï¿½ï¿½Æ¾ï¿½ ï¿½Ñ´ï¿½.
 		std::vector<VkFormat> userDepthFormats = { VK_FORMAT_D24_UNORM_S8_UINT,
 												   VK_FORMAT_D32_SFLOAT_S8_UINT,
 												   VK_FORMAT_D32_SFLOAT };
@@ -1300,7 +1300,7 @@ private:
 		imgCreateInfo.mipLevels = 1;
 		imgCreateInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
 		imgCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-		// ¾Æ·¡´Â ¼­·Î´Ù¸¥ queueFamily°¡ image¸¦ °øÀ¯ÇØ¼­ ¾µ¶§ Ã¤¿ö³Ö´Â ÆÄ¶ó¹ÌÅÍ´Ù.
+		// ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´Ù¸ï¿½ queueFamilyï¿½ï¿½ imageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½.
 		//imgCreateInfo.queueFamilyIndexCount ; 
 		//imgCreateInfo.pQueueFamilyIndices ;
 
@@ -1326,14 +1326,14 @@ private:
 
 
 		vkBindImageMemory(this->device, this->depthImage, this->depthImageMemory, 0);
-		// Âü°í
+		// ï¿½ï¿½ï¿½ï¿½
 		// Memory should be bound by calling vkBindImageMemory().
 		// If image is non - sparse then it must be bound completely and contiguously to a single VkDeviceMemory object.
 
 
 
-		// Âü°í
-		// imageView¸¦ »ý¼ºÇÏ±â Àü¿¡, ¹Ýµå½Ã image°¡ ÇÒ´çµÈ memory¿¡ bind µÇ¾îÀÖ¾î¾ß ÇÑ´Ù! ¾È±×·¯¸é validation layer error ¸Þ½ÃÁö ¶ä.
+		// ï¿½ï¿½ï¿½ï¿½
+		// imageViewï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ýµï¿½ï¿½ imageï¿½ï¿½ ï¿½Ò´ï¿½ï¿½ memoryï¿½ï¿½ bind ï¿½Ç¾ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½! ï¿½È±×·ï¿½ï¿½ï¿½ validation layer error ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 		VkImageViewCreateInfo imgViewCreateInfo{};
 		imgViewCreateInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
 		imgViewCreateInfo.image = this->depthImage;
@@ -1362,9 +1362,9 @@ private:
 		texHeight = STORAGE_IMAGE_HEIGHT;
 		texDepth = STORAGE_IMAGE_DEPTH;
 		texChannels = STORAGE_IMAGE_CHANNEL;
-		VkDeviceSize image3Dsize = texWidth * texHeight * texDepth * texChannels * sizeof(float);	// ¸Ç ¸¶Áö¸·Àº Ã¤³Î´ç byte¼ö.
+		VkDeviceSize image3Dsize = texWidth * texHeight * texDepth * texChannels * sizeof(float);	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½Î´ï¿½ byteï¿½ï¿½.
 		
-		std::vector<float> pixels(image3Dsize, 0.0f);		// build¸¦ clean¾ÈÇÏ¸é, ÀÌÀü½ÇÇà¿¡¼­ ÃÊ±âÈ£ÇÑ ³»¿ëÀÌ ±×´ë·Î ´ÙÀ½ ¤µÈúÇà¿¡¼­ ÀÌ¾îÁö³×;;  std::vector »ý¼º½Ã, ÇÒ´çµÈ ¸Þ¸ð¸® ÁÖ¼Ò°¡ °°À¸¸é, ´ÙÀ½»øÇà¿¡¼­ ÃÊ±âÈ­¸¦ »ý·«ÇÏ±â ¶§¹®¿¡ ÀÌÀü½ÇÇàÇß´ø µ¥ÀÌÅÍ°¡ ÀÌ¾îÁö´Â µí!
+		std::vector<float> pixels(image3Dsize, 0.0f);		// buildï¿½ï¿½ cleanï¿½ï¿½ï¿½Ï¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ê±ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½;;  std::vector ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ò´ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!
 		
 		std::cout << "Test for initializing values of density in CPU: " << pixels[ (2 + 0*texWidth + 0*texWidth*texHeight) * texChannels ] << std::endl;
 
@@ -1487,7 +1487,7 @@ private:
 								   * sizeof(Voxel);
 		std::cout << sizeof(Voxel) << std::endl;
 		
-		std::vector<Voxel> pixels(image3Dcount, {{0.1f, 0.0f, 0.0f}, 0.0f});		// build¸¦ clean¾ÈÇÏ¸é, ÀÌÀü½ÇÇà¿¡¼­ ÃÊ±âÈ£ÇÑ ³»¿ëÀÌ ±×´ë·Î ´ÙÀ½ ¤µÈúÇà¿¡¼­ ÀÌ¾îÁö³×;;  std::vector »ý¼º½Ã, ÇÒ´çµÈ ¸Þ¸ð¸® ÁÖ¼Ò°¡ °°À¸¸é, ´ÙÀ½»øÇà¿¡¼­ ÃÊ±âÈ­¸¦ »ý·«ÇÏ±â ¶§¹®¿¡ ÀÌÀü½ÇÇàÇß´ø µ¥ÀÌÅÍ°¡ ÀÌ¾îÁö´Â µí!
+		std::vector<Voxel> pixels(image3Dcount, {{0.1f, 0.0f, 0.0f}, 0.0f});		// buildï¿½ï¿½ cleanï¿½ï¿½ï¿½Ï¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ê±ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½;;  std::vector ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ò´ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½Ö¼Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à¿¡ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!
 
 		std::cout << "Test for velocity value in CPU: (";
 		std::cout << pixels[ 2 
@@ -1919,8 +1919,8 @@ private:
 		stagingBufferInfo.size = boxIndicesSize;
 		//
 		stagingBufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ÀÎ °æ¿ì¿¡´Â, 
-		// ¾Æ·¡ vertexBufferInfo.queueFamilyIndexCount ¿Í, vertexBufferInfo.pQueueFamilyIndices ¸¦ ¾È½áµµ µÈ´Ù.
+		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½, 
+		// ï¿½Æ·ï¿½ vertexBufferInfo.queueFamilyIndexCount ï¿½ï¿½, vertexBufferInfo.pQueueFamilyIndices ï¿½ï¿½ ï¿½È½áµµ ï¿½È´ï¿½.
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, queueFamilyIndexCount must be greater than 1
 		//stagingBufferInfo.queueFamilyIndexCount = 1;
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, 
@@ -1968,8 +1968,8 @@ private:
 		indexBufferInfo.size = boxIndicesSize;
 		//
 		indexBufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ÀÎ °æ¿ì¿¡´Â, 
-		// ¾Æ·¡ vertexBufferInfo.queueFamilyIndexCount ¿Í, vertexBufferInfo.pQueueFamilyIndices ¸¦ ¾È½áµµ µÈ´Ù.
+		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½, 
+		// ï¿½Æ·ï¿½ vertexBufferInfo.queueFamilyIndexCount ï¿½ï¿½, vertexBufferInfo.pQueueFamilyIndices ï¿½ï¿½ ï¿½È½áµµ ï¿½È´ï¿½.
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, queueFamilyIndexCount must be greater than 1
 		//vertexBuffer2Info.queueFamilyIndexCount = 1;
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, 
@@ -2028,8 +2028,8 @@ private:
 		stagingBufferInfo.size = boxLineIndicesSize;
 		//
 		stagingBufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ÀÎ °æ¿ì¿¡´Â, 
-		// ¾Æ·¡ vertexBufferInfo.queueFamilyIndexCount ¿Í, vertexBufferInfo.pQueueFamilyIndices ¸¦ ¾È½áµµ µÈ´Ù.
+		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½, 
+		// ï¿½Æ·ï¿½ vertexBufferInfo.queueFamilyIndexCount ï¿½ï¿½, vertexBufferInfo.pQueueFamilyIndices ï¿½ï¿½ ï¿½È½áµµ ï¿½È´ï¿½.
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, queueFamilyIndexCount must be greater than 1
 		//stagingBufferInfo.queueFamilyIndexCount = 1;
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, 
@@ -2077,8 +2077,8 @@ private:
 		indexBuffer2Info.size = boxLineIndicesSize;
 		//
 		indexBuffer2Info.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ÀÎ °æ¿ì¿¡´Â, 
-		// ¾Æ·¡ vertexBufferInfo.queueFamilyIndexCount ¿Í, vertexBufferInfo.pQueueFamilyIndices ¸¦ ¾È½áµµ µÈ´Ù.
+		// sharingMode = VK_SHARING_MODE_EXCLUSIVE ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½, 
+		// ï¿½Æ·ï¿½ vertexBufferInfo.queueFamilyIndexCount ï¿½ï¿½, vertexBufferInfo.pQueueFamilyIndices ï¿½ï¿½ ï¿½È½áµµ ï¿½È´ï¿½.
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, queueFamilyIndexCount must be greater than 1
 		//indexBuffer2Info.queueFamilyIndexCount = 1;
 		// If sharingMode is VK_SHARING_MODE_CONCURRENT, 
@@ -2151,7 +2151,7 @@ private:
 		lastDensityDescSetLayoutBinding.descriptorCount = 1;
 		lastDensityDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER;
 		lastDensityDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		lastDensityDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding currentDensityDescSetLayoutBinding{};
@@ -2159,7 +2159,7 @@ private:
 		currentDensityDescSetLayoutBinding.descriptorCount = 1;
 		currentDensityDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		currentDensityDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		currentDensityDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 	
 		VkDescriptorSetLayoutBinding densityCopiesDescSetLayoutBinding{};
@@ -2172,9 +2172,9 @@ private:
 		densityCopySamplerDescSetLayoutBinding.binding = 4;
 		densityCopySamplerDescSetLayoutBinding.descriptorCount = 1;
 		densityCopySamplerDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER;
-		// ¾Æ·¡´Â Æ¯Á¤ sampler¸¸ imageDescriptor¿¡ Á¾¼Ó½ÃÅ°°í ½ÍÀ»¶§, ¾²´Â ÆÄ¶ó¹ÌÅÍÀÎµí. nullptrÀÌ¸é, ÇØ´ç descriptorSet¾È¿¡ ÀÖ´Â ¸ðµç image descriptor¿¡, sampler¸¦ ¾µ¼öÀÖ´Âµí.
+		// ï¿½Æ·ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ samplerï¿½ï¿½ imageDescriptorï¿½ï¿½ ï¿½ï¿½ï¿½Ó½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½. nullptrï¿½Ì¸ï¿½, ï¿½Ø´ï¿½ descriptorSetï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ image descriptorï¿½ï¿½, samplerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Âµï¿½.
 		densityCopySamplerDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		densityCopySamplerDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
 
 
@@ -2184,7 +2184,7 @@ private:
 		lastVelocityDensityDescSetLayoutBinding.descriptorCount = 1;
 		lastVelocityDensityDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		lastVelocityDensityDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		lastVelocityDensityDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding currentVelocityDensityDescSetLayoutBinding{};
@@ -2192,7 +2192,7 @@ private:
 		currentVelocityDensityDescSetLayoutBinding.descriptorCount = 1;
 		currentVelocityDensityDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		currentVelocityDensityDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		currentVelocityDensityDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding velocityDensityTempDescSetLayoutBinding{};
@@ -2200,7 +2200,7 @@ private:
 		velocityDensityTempDescSetLayoutBinding.descriptorCount = 1;
 		velocityDensityTempDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		velocityDensityTempDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		velocityDensityTempDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding lastDivergencePressureDescSetLayoutBinding{};
@@ -2208,7 +2208,7 @@ private:
 		lastDivergencePressureDescSetLayoutBinding.descriptorCount = 1;
 		lastDivergencePressureDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		lastDivergencePressureDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		lastDivergencePressureDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding currentDivergencePressureDescSetLayoutBinding{};
@@ -2216,7 +2216,7 @@ private:
 		currentDivergencePressureDescSetLayoutBinding.descriptorCount = 1;
 		currentDivergencePressureDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		currentDivergencePressureDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		currentDivergencePressureDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding divergencePressureTempDescSetLayoutBinding{};
@@ -2224,7 +2224,7 @@ private:
 		divergencePressureTempDescSetLayoutBinding.descriptorCount = 1;
 		divergencePressureTempDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		divergencePressureTempDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		divergencePressureTempDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding bcDescSetLayoutBinding{};
@@ -2232,7 +2232,7 @@ private:
 		bcDescSetLayoutBinding.descriptorCount = 1;
 		bcDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		bcDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		bcDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 		VkDescriptorSetLayoutBinding vorticityDescSetLayoutBinding{};
@@ -2240,12 +2240,12 @@ private:
 		vorticityDescSetLayoutBinding.descriptorCount = 1;
 		vorticityDescSetLayoutBinding.descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		vorticityDescSetLayoutBinding.pImmutableSamplers = nullptr;
-		// ¾Æ·¡ ÆÄ¶ó¹ÌÅÍ´Â, which pipeline shader stages can access a resource for this binding, ¸¦ ÀÇ¹ÌÇÔ.
+		// ï¿½Æ·ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, which pipeline shader stages can access a resource for this binding, ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½.
 		vorticityDescSetLayoutBinding.stageFlags = VK_SHADER_STAGE_COMPUTE_BIT;
 
 
 
-		// ±âº»ÀûÀ¸·Î std::array = ´Â º¹»çÇØ¼­ °ªÀ» ³Ö³×.
+		// ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ std::array = ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö³ï¿½.
 		std::array<VkDescriptorSetLayoutBinding, 13> DescSetLayoutBindings = { uboDescSetLayoutBinding,
 																			  lastDensityDescSetLayoutBinding,
 																			  currentDensityDescSetLayoutBinding,
@@ -2275,57 +2275,57 @@ private:
 	}
 	void createDescriptorPool() {
 
-		VkDescriptorPoolSize poolSize0{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize0{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize0.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-		poolSize0.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);		// ¿©·¯ DescriptorSet¿¡ °ÉÃÄ¼­, ±× °¢°¢ÀÇ SetÀÌ °¡Áö´Â Descriptor °¹¼ö¸¦ ´Ù ÇÕÇØ¼­, Á¤ÇØÁö´Â °¹¼ö´Ù.
+		poolSize0.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);		// ï¿½ï¿½ï¿½ï¿½ DescriptorSetï¿½ï¿½ ï¿½ï¿½ï¿½Ä¼ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Setï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Descriptor ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
-		VkDescriptorPoolSize poolSize1{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize1{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize1.type = VK_DESCRIPTOR_TYPE_SAMPLER;
 		poolSize1.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize2{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize2{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize2.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize2.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize3{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize3{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize3.type = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE;
 		poolSize3.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize4{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize4{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize4.type = VK_DESCRIPTOR_TYPE_SAMPLER;
 		poolSize4.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
 
 
-		VkDescriptorPoolSize poolSize5{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize5{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize5.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize5.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize6{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize6{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize6.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize6.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize7{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize7{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize7.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize7.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize8{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize8{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize8.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize8.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize9{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize9{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize9.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize9.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize10{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize10{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize10.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize10.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize11{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize11{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize11.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize11.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
-		VkDescriptorPoolSize poolSize12{};	// °¢ binding¿µ¿ª¸¶´Ù, poolSize¸¦ ÇÑ¹ø¾¿ ÁöÁ¤ÇÑ´Ù.
+		VkDescriptorPoolSize poolSize12{};	// ï¿½ï¿½ bindingï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, poolSizeï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		poolSize12.type = VK_DESCRIPTOR_TYPE_STORAGE_IMAGE;
 		poolSize12.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
 
@@ -2341,8 +2341,8 @@ private:
 		VkDescriptorPoolCreateInfo descPoolCreateInfo{};
 		descPoolCreateInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
 		descPoolCreateInfo.poolSizeCount = static_cast<uint32_t>(poolSizeInfos.size());
-		descPoolCreateInfo.pPoolSizes = poolSizeInfos.data();							// ½±°Ô »ý°¢ÇÏ¸é, pool¾ÈÀÇ descriptorÀÇ °¹¼ö.
-		descPoolCreateInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);		// ½±°Ô »ý°¢ÇÏ¸é, pool¾ÈÀÇ descriptorSetÀÇ °¹¼ö.
+		descPoolCreateInfo.pPoolSizes = poolSizeInfos.data();							// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½, poolï¿½ï¿½ï¿½ï¿½ descriptorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		descPoolCreateInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½, poolï¿½ï¿½ï¿½ï¿½ descriptorSetï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
 		if (vkCreateDescriptorPool(this->device, &descPoolCreateInfo, nullptr, &(this->descriptorPool)) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create descriptor pool.");
@@ -2375,10 +2375,10 @@ private:
 			descUniforBuffInfo.buffer = this->uniformBuffers[i];
 			descUniforBuffInfo.offset = 0;
 			descUniforBuffInfo.range = sizeof(UniformBufferObject);		// = sizeof(UniforBufferObject); or = VK_WHOLE_SIZE ;
-			// sizeof(this->uniformBuffers[i]) ·Î ÇÏ¸é ¾È‰Î! 
-			// ¸¸µé¾îÁø ¹öÆÛ°´Ã¼(ÀÏÁ¾ÀÇº¯¼ö)ÀÇ Å©±â¿Í, ¹öÆÛ°´Ã¼°¡ °ü¸®ÇÏ´Â(°¡¸®Å°´Â?) ¸Þ¸ð¸®ÀÇ Å©±â.´Â ¼­·Î ´Ù¸¥°ÍÀÌ´Ù!
-			// ±×¸®°í ¸Þ¸ð¸®ÀÇ Å©±â¿Í, ÀÔ·ÂµÉ µ¥ÀÌÅÍÀÇ Å©±â ¶ÇÇÑ ´Ù¸£´Ù.
-			// ¿©±â¼­´Â ÀÔ·ÂµÉ µ¥ÀÌÅÍÀÇ Å©±â·Î¼­, sizeof(UniforBufferObject)¸¦ ½á¾ß Á¤È®ÇÏ´Ù.
+			// sizeof(this->uniformBuffers[i]) ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½È‰ï¿½! 
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û°ï¿½Ã¼(ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½ï¿½)ï¿½ï¿½ Å©ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Û°ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½(ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½?) ï¿½Þ¸ï¿½ï¿½ï¿½ Å©ï¿½ï¿½.ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½Ì´ï¿½!
+			// ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½, ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½.
+			// ï¿½ï¿½ï¿½â¼­ï¿½ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½Î¼ï¿½, sizeof(UniforBufferObject)ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È®ï¿½Ï´ï¿½.
 
 			VkDescriptorImageInfo descSamplerInfo{};
 			descSamplerInfo.imageLayout = VK_IMAGE_LAYOUT_GENERAL;
@@ -2440,7 +2440,7 @@ private:
 
 
 
-			VkWriteDescriptorSet descUniforBuffWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descUniforBuffWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descUniforBuffWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			// the destination descriptor set to update.
 			descUniforBuffWriteInfo.dstSet = this->descriptorSets[i];
@@ -2455,7 +2455,7 @@ private:
 			descUniforBuffWriteInfo.pImageInfo = nullptr;
 			descUniforBuffWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descLastDensityWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descLastDensityWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descLastDensityWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			// the destination descriptor set to update.
 			descLastDensityWriteInfo.dstSet = this->descriptorSets[i];
@@ -2471,7 +2471,7 @@ private:
 			descLastDensityWriteInfo.pTexelBufferView = nullptr;
 			descLastDensityWriteInfo.pNext = nullptr;
 
-			VkWriteDescriptorSet descCurrentDensityWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descCurrentDensityWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descCurrentDensityWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			// the destination descriptor set to update.
 			descCurrentDensityWriteInfo.dstSet = this->descriptorSets[i];
@@ -2486,7 +2486,7 @@ private:
 			descCurrentDensityWriteInfo.pImageInfo = &descDensityInfo;
 			descCurrentDensityWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descDensityCopiesWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descDensityCopiesWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descDensityCopiesWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			// the destination descriptor set to update.
 			descDensityCopiesWriteInfo.dstSet = this->descriptorSets[i];
@@ -2501,7 +2501,7 @@ private:
 			descDensityCopiesWriteInfo.pImageInfo = &descDensityCopiesInfo;
 			descDensityCopiesWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descDensityCopySamplersWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descDensityCopySamplersWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descDensityCopySamplersWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			// the destination descriptor set to update.
 			descDensityCopySamplersWriteInfo.dstSet = this->descriptorSets[i];
@@ -2518,7 +2518,7 @@ private:
 
 
 
-			VkWriteDescriptorSet descLastVelocityDensityWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descLastVelocityDensityWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descLastVelocityDensityWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descLastVelocityDensityWriteInfo.dstSet = this->descriptorSets[i];
 			descLastVelocityDensityWriteInfo.dstBinding = 5;
@@ -2530,7 +2530,7 @@ private:
 			descLastVelocityDensityWriteInfo.pImageInfo = &descLastVelocityDensityInfo;
 			descLastVelocityDensityWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descCurrentVelocityDensityWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descCurrentVelocityDensityWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descCurrentVelocityDensityWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descCurrentVelocityDensityWriteInfo.dstSet = this->descriptorSets[i];
 			descCurrentVelocityDensityWriteInfo.dstBinding = 6;
@@ -2542,7 +2542,7 @@ private:
 			descCurrentVelocityDensityWriteInfo.pImageInfo = &descCurrentVelocityDensityInfo;
 			descCurrentVelocityDensityWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descVelocityDensityTempWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descVelocityDensityTempWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descVelocityDensityTempWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descVelocityDensityTempWriteInfo.dstSet = this->descriptorSets[i];
 			descVelocityDensityTempWriteInfo.dstBinding = 7;
@@ -2554,7 +2554,7 @@ private:
 			descVelocityDensityTempWriteInfo.pImageInfo = &descVelocityDensityTempInfo;
 			descVelocityDensityTempWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descLastDivergencePressureWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descLastDivergencePressureWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descLastDivergencePressureWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descLastDivergencePressureWriteInfo.dstSet = this->descriptorSets[i];
 			descLastDivergencePressureWriteInfo.dstBinding = 8;
@@ -2566,7 +2566,7 @@ private:
 			descLastDivergencePressureWriteInfo.pImageInfo = &descLastDivergencePressureInfo;
 			descLastDivergencePressureWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descCurrentDivergencePressureWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descCurrentDivergencePressureWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descCurrentDivergencePressureWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descCurrentDivergencePressureWriteInfo.dstSet = this->descriptorSets[i];
 			descCurrentDivergencePressureWriteInfo.dstBinding = 9;
@@ -2578,7 +2578,7 @@ private:
 			descCurrentDivergencePressureWriteInfo.pImageInfo = &descCurrentDivergencePressureInfo;
 			descCurrentDivergencePressureWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descDivergencePressureTempWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descDivergencePressureTempWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descDivergencePressureTempWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descDivergencePressureTempWriteInfo.dstSet = this->descriptorSets[i];
 			descDivergencePressureTempWriteInfo.dstBinding = 10;
@@ -2590,7 +2590,7 @@ private:
 			descDivergencePressureTempWriteInfo.pImageInfo = &descDivergencePressureTempInfo;
 			descDivergencePressureTempWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descBCWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descBCWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descBCWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descBCWriteInfo.dstSet = this->descriptorSets[i];
 			descBCWriteInfo.dstBinding = 11;
@@ -2602,7 +2602,7 @@ private:
 			descBCWriteInfo.pImageInfo = &descBCInfo;
 			descBCWriteInfo.pTexelBufferView = nullptr;
 
-			VkWriteDescriptorSet descVorticityWriteInfo{};				// descriptorSet¿¡ descriptor¸¦ writeÇÑ´Ù´Â ÀÇ¹Ì.
+			VkWriteDescriptorSet descVorticityWriteInfo{};				// descriptorSetï¿½ï¿½ descriptorï¿½ï¿½ writeï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			descVorticityWriteInfo.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
 			descVorticityWriteInfo.dstSet = this->descriptorSets[i];
 			descVorticityWriteInfo.dstBinding = 12;
@@ -2670,50 +2670,29 @@ private:
 		const uint32_t consecutiveStagesNum = 8;
 		//(this->computeShaderModules).resize(consecutiveStagesNum);
 
-		//VkShaderModule compShaderModule3_0 = createShaderModule("shader_Resourcing.comp", "comp");
-		//this->computeShaderModules.push_back(compShaderModule3_0);
-		//VkShaderModule compShaderModule3_1 = createShaderModule("shader_Projection.comp", "comp");
-		//this->computeShaderModules.push_back(compShaderModule3_1);
-		// VkShaderModule compShaderModule3_0 = createShaderModule("shader_Sourcing.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_0);
-		// VkShaderModule compShaderModule3_1 = createShaderModule("shader_Divergence.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_1);
-		// VkShaderModule compShaderModule3_2 = createShaderModule("shader_Jacobi_1.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_2);
-		// VkShaderModule compShaderModule3_3 = createShaderModule("shader_Jacobi_2.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_3);
-		// VkShaderModule compShaderModule3_4 = createShaderModule("shader_ApplyPressure.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_4);
-		// VkShaderModule compShaderModule3_5 = createShaderModule("shader_ComputeVorticity.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_5);
-		// VkShaderModule compShaderModule3_6 = createShaderModule("shader_ApplyVorticity.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_6);
-		// VkShaderModule compShaderModule3_7 = createShaderModule("shader_Advection.comp", "comp");
-		// this->computeShaderModules.push_back(compShaderModule3_7);
-
 		//VkShaderModule compShaderModule3_0 = createShaderModule("shader_Sourcing.comp", "comp");
-		auto compShaderCode3_0 = readFile("shader_Sourcing_comp.spv");
+		auto compShaderCode3_0 = readFile("shaders_out/shader_Sourcing_comp.spv");
 		VkShaderModule compShaderModule3_0 = createShaderModule(compShaderCode3_0);
 		this->computeShaderModules.push_back(compShaderModule3_0);
-		auto compShaderCode3_1 = readFile("shader_Divergence_comp.spv"); 
+		auto compShaderCode3_1 = readFile("shaders_out/shader_Divergence_comp.spv"); 
 		VkShaderModule compShaderModule3_1 = createShaderModule(compShaderCode3_1);
 		this->computeShaderModules.push_back(compShaderModule3_1);
-		auto compShaderCode3_2 = readFile("shader_Jacobi_1_comp.spv");
+		auto compShaderCode3_2 = readFile("shaders_out/shader_Jacobi_1_comp.spv");
 		VkShaderModule compShaderModule3_2 = createShaderModule(compShaderCode3_2);
 		this->computeShaderModules.push_back(compShaderModule3_2);
-		auto compShaderCode3_3 = readFile("shader_Jacobi_2_comp.spv");
+		auto compShaderCode3_3 = readFile("shaders_out/shader_Jacobi_2_comp.spv");
 		VkShaderModule compShaderModule3_3 = createShaderModule(compShaderCode3_3);
 		this->computeShaderModules.push_back(compShaderModule3_3);
-		auto compShaderCode3_4 = readFile("shader_ApplyPressure_comp.spv");
+		auto compShaderCode3_4 = readFile("shaders_out/shader_ApplyPressure_comp.spv");
 		VkShaderModule compShaderModule3_4 = createShaderModule(compShaderCode3_4);
 		this->computeShaderModules.push_back(compShaderModule3_4);
-		auto compShaderCode3_5 = readFile("shader_ComputeVorticity_comp.spv");
+		auto compShaderCode3_5 = readFile("shaders_out/shader_ComputeVorticity_comp.spv");
 		VkShaderModule compShaderModule3_5 = createShaderModule(compShaderCode3_5);
 		this->computeShaderModules.push_back(compShaderModule3_5);
-		auto compShaderCode3_6 = readFile("shader_ApplyVorticity_comp.spv");
+		auto compShaderCode3_6 = readFile("shaders_out/shader_ApplyVorticity_comp.spv");
 		VkShaderModule compShaderModule3_6 = createShaderModule(compShaderCode3_6);
 		this->computeShaderModules.push_back(compShaderModule3_6);
-		auto compShaderCode3_7 = readFile("shader_Advection_comp.spv");
+		auto compShaderCode3_7 = readFile("shaders_out/shader_Advection_comp.spv");
 		VkShaderModule compShaderModule3_7 = createShaderModule(compShaderCode3_7);
 		this->computeShaderModules.push_back(compShaderModule3_7);
 
@@ -2748,7 +2727,7 @@ private:
 	}
 	void createGraphicsPipeline() {
 
-		//VkViewport viewport{};	// to member variable.	// ³ë¸»¶óÀÌÁî ¾ÈÇÑ ÁÂÇ¥°è Å©±â ±×´ë·Î¾¸. ´Ù¸¸ int(800ÇÈ¼¿ µî) ´ë½Å float(800.0 µî)·Î Ç¥ÇöÇÏ´Â °Í »ÓÀÓ.
+		//VkViewport viewport{};	// to member variable.	// ï¿½ë¸»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½×´ï¿½Î¾ï¿½. ï¿½Ù¸ï¿½ int(800ï¿½È¼ï¿½ ï¿½ï¿½) ï¿½ï¿½ï¿½ float(800.0 ï¿½ï¿½)ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		this->viewport.width = (float)(this->swapChainExtent).width;
 		this->viewport.height = (float)(this->swapChainExtent).height;
 		this->viewport.x = 0.0f;
@@ -2872,10 +2851,10 @@ private:
 		// finalColor.rgb = (srcColorBlendFactor * newColor.rgb) <colorBlendOp> (dstColorBlendFactor * oldColor.rgb);
 		// finalColor.a   = (srcAlphaBlendFactor * newColor.a)   <alphaBlendOp> (dstAlphaBlendFactor * oldColor.a);
 		// finalColor     = newColor;
-		// src °¡ Áö±Ý pipeline¿¡¼­ »õ·Î³ª¿À°íÀÖ´Â imageÀÌ°í, dst °¡ ÀÌÀü¿¡ ³ª¿Â attachment ÀÌ¹ÌÁöÀÎ µí.
+		// src ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ pipelineï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ imageï¿½Ì°ï¿½, dst ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ attachment ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 		VkPipelineColorBlendAttachmentState colorBlendAttachmentInfo{};
 		colorBlendAttachmentInfo.blendEnable = VK_TRUE;
-		colorBlendAttachmentInfo.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;		// or VK_BLEND_FACTOR_SRC_ALPHA;	// ¿©±â¼­ ³ª¿Â BELND_FACTOR °¡, ¹Ù·Î ¾Æ·¡¿¡ ³ª¿À´Â, VkPipelineColorBlendStateCreateInfo::blendConstants (floatÇü) ¸¦ ÀÇ¹ÌÇÑ´Ù.
+		colorBlendAttachmentInfo.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;		// or VK_BLEND_FACTOR_SRC_ALPHA;	// ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ BELND_FACTOR ï¿½ï¿½, ï¿½Ù·ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, VkPipelineColorBlendStateCreateInfo::blendConstants (floatï¿½ï¿½) ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½Ñ´ï¿½.
 		colorBlendAttachmentInfo.dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;	// or VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
 		colorBlendAttachmentInfo.colorBlendOp = VK_BLEND_OP_ADD;
 		colorBlendAttachmentInfo.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
@@ -2902,27 +2881,27 @@ private:
 
 
 
-		//std::vector<VkShaderModule> shaderModules;	// ¸É¹öº¯¼ö·Î °¨.
+		//std::vector<VkShaderModule> shaderModules;	// ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 		// VkShaderModule vertShaderModule = createShaderModule("shader.vert", "vert");
 		// this->graphicsShaderModules.push_back(vertShaderModule);
 		// VkShaderModule fragShaderModule = createShaderModule("shader.frag", "frag");
 		// this->graphicsShaderModules.push_back(fragShaderModule);
-		auto vertShaderCode = readFile("shader_vert.spv"); 
+		auto vertShaderCode = readFile("shaders_out/shader_vert.spv"); 
 		VkShaderModule vertShaderModule = createShaderModule(vertShaderCode);
 		this->graphicsShaderModules.push_back(vertShaderModule);
-		auto fragShaderCode = readFile("shader_frag.spv"); 
+		auto fragShaderCode = readFile("shaders_out/shader_frag.spv"); 
 		VkShaderModule fragShaderModule = createShaderModule(fragShaderCode);
 		this->graphicsShaderModules.push_back(fragShaderModule);
 
 		std::vector<VkPipelineShaderStageCreateInfo> graphicsShaderStages;
 
 		VkPipelineShaderStageCreateInfo vertShaderStageInfo{};
-		vertShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;	// VK_STRUCTURE_TYPE_''SHADER_''CREATE_INFO_'EXT'; ¿Í ÇÞ°¥¸®Áö ¸»°Í!
+		vertShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;	// VK_STRUCTURE_TYPE_''SHADER_''CREATE_INFO_'EXT'; ï¿½ï¿½ ï¿½Þ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
 		vertShaderStageInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
 		vertShaderStageInfo.module = this->graphicsShaderModules[0];
 		vertShaderStageInfo.pName = "main";
-		// vertShaderStageInfo.pSpecializationInfo;	// Entry Point ¸¦ ¸ÊÇÎÇÏ´Â Ãß°¡±â´É°ú °ü·ÃµÈ Ç×¸ñ.
-		// vertShaderStageInfo.flags;					// subgroup °ü·ÃµÈ Ãß°¡±â´É flagµé.
+		// vertShaderStageInfo.pSpecializationInfo;	// Entry Point ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ß°ï¿½ï¿½ï¿½É°ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½×¸ï¿½.
+		// vertShaderStageInfo.flags;					// subgroup ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ flagï¿½ï¿½.
 		graphicsShaderStages.push_back(vertShaderStageInfo);
 
 		VkPipelineShaderStageCreateInfo fragShaderStateInfo{};
@@ -2941,7 +2920,7 @@ private:
 		gPipelineInfo.subpass = 0;
 		gPipelineInfo.layout = this->gctPipelineLayout;
 		//
-		gPipelineInfo.pViewportState = &viewportStateInfo;		// dynamic state¸¦ ¼³Á¤Çß´õ¶óµµ, ÀÌºÎºÐÀº ¹Ýµå½Ã ½á³Ö¾î¾ß ÇÑ´Ù.
+		gPipelineInfo.pViewportState = &viewportStateInfo;		// dynamic stateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½, ï¿½ÌºÎºï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
 		gPipelineInfo.pDynamicState = &dynamicStateInfo;
 		//
 		gPipelineInfo.pVertexInputState = &vertInputInfo;
@@ -2956,7 +2935,7 @@ private:
 		//
 		//gPipelineInfo.flags;
 		gPipelineInfo.basePipelineHandle = nullptr;
-		gPipelineInfo.basePipelineIndex = -1;	// basePipelineIndex is an index into the pCreateInfos parameter(vkCreateGraphicsPipelinesÇÔ¼ö¿¡¼­ÀÇ ÀÎÀÚ) to use as a pipeline to derive from.
+		gPipelineInfo.basePipelineIndex = -1;	// basePipelineIndex is an index into the pCreateInfos parameter(vkCreateGraphicsPipelinesï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) to use as a pipeline to derive from.
 
 		if (vkCreateGraphicsPipelines(this->device, nullptr,
 			1, &gPipelineInfo,
@@ -2968,7 +2947,7 @@ private:
 	}
 	void createGraphicsPipeline2() {
 
-		//VkViewport viewport{};	// to member variable.	// ³ë¸»¶óÀÌÁî ¾ÈÇÑ ÁÂÇ¥°è Å©±â ±×´ë·Î¾¸. ´Ù¸¸ int(800ÇÈ¼¿ µî) ´ë½Å float(800.0 µî)·Î Ç¥ÇöÇÏ´Â °Í »ÓÀÓ.
+		//VkViewport viewport{};	// to member variable.	// ï¿½ë¸»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½×´ï¿½Î¾ï¿½. ï¿½Ù¸ï¿½ int(800ï¿½È¼ï¿½ ï¿½ï¿½) ï¿½ï¿½ï¿½ float(800.0 ï¿½ï¿½)ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		this->viewport.width = (float)(this->swapChainExtent).width;
 		this->viewport.height = (float)(this->swapChainExtent).height;
 		this->viewport.x = 0.0f;
@@ -3092,10 +3071,10 @@ private:
 		// finalColor.rgb = (srcColorBlendFactor * newColor.rgb) <colorBlendOp> (dstColorBlendFactor * oldColor.rgb);
 		// finalColor.a   = (srcAlphaBlendFactor * newColor.a)   <alphaBlendOp> (dstAlphaBlendFactor * oldColor.a);
 		// finalColor     = newColor;
-		// src °¡ Áö±Ý pipeline¿¡¼­ »õ·Î³ª¿À°íÀÖ´Â imageÀÌ°í, dst °¡ ÀÌÀü¿¡ ³ª¿Â attachment ÀÌ¹ÌÁöÀÎ µí.
+		// src ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ pipelineï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ imageï¿½Ì°ï¿½, dst ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ attachment ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 		VkPipelineColorBlendAttachmentState colorBlendAttachmentInfo{};
 		colorBlendAttachmentInfo.blendEnable = VK_TRUE;
-		colorBlendAttachmentInfo.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;		// or VK_BLEND_FACTOR_SRC_ALPHA;	// ¿©±â¼­ ³ª¿Â BELND_FACTOR °¡, ¹Ù·Î ¾Æ·¡¿¡ ³ª¿À´Â, VkPipelineColorBlendStateCreateInfo::blendConstants (floatÇü) ¸¦ ÀÇ¹ÌÇÑ´Ù.
+		colorBlendAttachmentInfo.srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;		// or VK_BLEND_FACTOR_SRC_ALPHA;	// ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ BELND_FACTOR ï¿½ï¿½, ï¿½Ù·ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, VkPipelineColorBlendStateCreateInfo::blendConstants (floatï¿½ï¿½) ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½Ñ´ï¿½.
 		colorBlendAttachmentInfo.dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;	// or VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
 		colorBlendAttachmentInfo.colorBlendOp = VK_BLEND_OP_ADD;
 		colorBlendAttachmentInfo.srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
@@ -3122,23 +3101,23 @@ private:
 
 
 
-		//std::vector<VkShaderModule> shaderModules;	// ¸É¹öº¯¼ö·Î °¨.
-		auto vertShader2Code = readFile("shader2_vert.spv"); 
+		//std::vector<VkShaderModule> shaderModules;	// ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+		auto vertShader2Code = readFile("shaders_out/shader2_vert.spv"); 
 		VkShaderModule vertShaderModule2 = createShaderModule(vertShader2Code);
 		this->graphicsShaderModules2.push_back(vertShaderModule2);
-		auto fragShader2Code = readFile("shader2_frag.spv"); 
+		auto fragShader2Code = readFile("shaders_out/shader2_frag.spv"); 
 		VkShaderModule fragShaderModule2 = createShaderModule(fragShader2Code);
 		this->graphicsShaderModules2.push_back(fragShaderModule2);
 
 		std::vector<VkPipelineShaderStageCreateInfo> graphics2ShaderStages;
 
 		VkPipelineShaderStageCreateInfo vertShaderStageInfo{};
-		vertShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;	// VK_STRUCTURE_TYPE_''SHADER_''CREATE_INFO_'EXT'; ¿Í ÇÞ°¥¸®Áö ¸»°Í!
+		vertShaderStageInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;	// VK_STRUCTURE_TYPE_''SHADER_''CREATE_INFO_'EXT'; ï¿½ï¿½ ï¿½Þ°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
 		vertShaderStageInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
 		vertShaderStageInfo.module = this->graphicsShaderModules2[0];
 		vertShaderStageInfo.pName = "main";
-		// vertShaderStageInfo.pSpecializationInfo;	// Entry Point ¸¦ ¸ÊÇÎÇÏ´Â Ãß°¡±â´É°ú °ü·ÃµÈ Ç×¸ñ.
-		// vertShaderStageInfo.flags;					// subgroup °ü·ÃµÈ Ãß°¡±â´É flagµé.
+		// vertShaderStageInfo.pSpecializationInfo;	// Entry Point ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ß°ï¿½ï¿½ï¿½É°ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ ï¿½×¸ï¿½.
+		// vertShaderStageInfo.flags;					// subgroup ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ flagï¿½ï¿½.
 		graphics2ShaderStages.push_back(vertShaderStageInfo);
 
 		VkPipelineShaderStageCreateInfo fragShaderStateInfo{};
@@ -3157,7 +3136,7 @@ private:
 		g2PipelineInfo.subpass = 0;
 		g2PipelineInfo.layout = this->gctPipelineLayout;
 		//
-		g2PipelineInfo.pViewportState = &viewportStateInfo;		// dynamic state¸¦ ¼³Á¤Çß´õ¶óµµ, ÀÌºÎºÐÀº ¹Ýµå½Ã ½á³Ö¾î¾ß ÇÑ´Ù.
+		g2PipelineInfo.pViewportState = &viewportStateInfo;		// dynamic stateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½, ï¿½ÌºÎºï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ ï¿½ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
 		g2PipelineInfo.pDynamicState = &dynamicStateInfo;
 		//
 		g2PipelineInfo.pVertexInputState = &vertInputInfo;
@@ -3172,7 +3151,7 @@ private:
 		//
 		//gPipelineInfo.flags;
 		g2PipelineInfo.basePipelineHandle = nullptr;
-		g2PipelineInfo.basePipelineIndex = -1;	// basePipelineIndex is an index into the pCreateInfos parameter(vkCreateGraphicsPipelinesÇÔ¼ö¿¡¼­ÀÇ ÀÎÀÚ) to use as a pipeline to derive from.
+		g2PipelineInfo.basePipelineIndex = -1;	// basePipelineIndex is an index into the pCreateInfos parameter(vkCreateGraphicsPipelinesï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) to use as a pipeline to derive from.
 
 		if (vkCreateGraphicsPipelines(this->device, nullptr,
 			1, &g2PipelineInfo,
@@ -3210,8 +3189,8 @@ private:
 
 		VkSemaphoreCreateInfo semaphoreInfo{};
 		semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
-		// ¸î°³ semaphore ¸¸µé°Å³Ä´Â Á¤º¸¸¦ ¾È³Ö¾îÁÖ¹Ç·Î, vkCreateSemaphore()ÇÔ¼ö ÇÑ¹ø ½ÇÇàÇÒ¶§¸¶´Ù, ÇÑ°³ÀÇ semaphore°´Ã¼¸¸ ¸¸µé¼öÀÖ´Âµí?
-		// µû¶ó¼­ ¹è¿­ÀÇ Æ÷ÀÎÅÍ¸¦ ÀÎÀÚ·Î ³Ö¾îÁÖ¸é ¾ÈµÇ°í, vkCreateSemaphore()ÇÔ¼ö¸¦ ¿©·¯¹ø ½ÇÇàÇÏ¿©, °¢ °´Ã¼¸¦ ´ãÀ» º¯¼ö ÇÏ³ª¾¿À» ³Ö¾îÁà¾ß ÇÒµí.
+		// ï¿½î°³ semaphore ï¿½ï¿½ï¿½ï¿½Å³Ä´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³Ö¾ï¿½ï¿½Ö¹Ç·ï¿½, vkCreateSemaphore()ï¿½Ô¼ï¿½ ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ñ°ï¿½ï¿½ï¿½ semaphoreï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Âµï¿½?
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½Ö¾ï¿½ï¿½Ö¸ï¿½ ï¿½ÈµÇ°ï¿½, vkCreateSemaphore()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ ï¿½Òµï¿½.
 
 		for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
 		{
@@ -3229,8 +3208,8 @@ private:
 		VkFenceCreateInfo fenceInfo{};
 		fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 		fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
-		// ¸î°³ semaphore ¸¸µé°Å³Ä´Â Á¤º¸¸¦ ¾È³Ö¾îÁÖ¹Ç·Î, vkCreateSemaphore()ÇÔ¼ö ÇÑ¹ø ½ÇÇàÇÒ¶§¸¶´Ù, ÇÑ°³ÀÇ semaphore°´Ã¼¸¸ ¸¸µé¼öÀÖ´Âµí?
-		// µû¶ó¼­ ¹è¿­ÀÇ Æ÷ÀÎÅÍ¸¦ ÀÎÀÚ·Î ³Ö¾îÁÖ¸é ¾ÈµÇ°í, vkCreateSemaphore()ÇÔ¼ö¸¦ ¿©·¯¹ø ½ÇÇàÇÏ¿©, °¢ °´Ã¼¸¦ ´ãÀ» º¯¼ö ÇÏ³ª¾¿À» ³Ö¾îÁà¾ß 
+		// ï¿½î°³ semaphore ï¿½ï¿½ï¿½ï¿½Å³Ä´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³Ö¾ï¿½ï¿½Ö¹Ç·ï¿½, vkCreateSemaphore()ï¿½Ô¼ï¿½ ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ñ°ï¿½ï¿½ï¿½ semaphoreï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Âµï¿½?
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½Ö¾ï¿½ï¿½Ö¸ï¿½ ï¿½ÈµÇ°ï¿½, vkCreateSemaphore()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ 
 		
 		for (size_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++)
 		{
@@ -3365,7 +3344,7 @@ private:
 				if ( !strcmp(uRwRExtension.c_str(), supportedExtension.extensionName) ) {
 					matchedCount++;
 					std::cout << "\t\t\t\t" << "Supported by Vulkan Instnace." << std::endl;
-					matchedExtensions.push_back(uRwRExtension.c_str());		// supportedExtension.extensionNameÀ¸·Î °ªÀ» ¹ÞÀ¸¸é ¾ÈµÈ´Ù! supportedExtensionÀº ÀÌ ÇÔ¼ö³»¿¡¼­¸¸ À¯È¿ÇÏ°í »ç¶óÁú °ÍÀÌ±â ¶§¹®ÀÌ´Ù.
+					matchedExtensions.push_back(uRwRExtension.c_str());		// supportedExtension.extensionNameï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÈ´ï¿½! supportedExtensionï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 					continue;
 				}
 			}
@@ -3415,7 +3394,7 @@ private:
 				if (!strcmp(availableValidationLayer.layerName, validationLayer)) {
 					std::cout << "\t\t\t\t" << "User-Required & vulkanKHR-Supported" << std::endl;
 					howManyValidationLayersMatched++;
-					matchedValidationLayers.push_back(validationLayer);			// availableValidationLayer.layerNameÀ» °ªÀ¸·Î ³Ö¾îÁÖ¸é ¾ÈµÈ´Ù! ÀÌÇÔ¼ö¹Û¿¡¼­´Â ¾ø¾îÁú °´Ã¼ÀÇ µ¥ÀÌÅÍÀÌ±â ¶§¹®ÀÌ´Ù!
+					matchedValidationLayers.push_back(validationLayer);			// availableValidationLayer.layerNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ö¸ï¿½ ï¿½ÈµÈ´ï¿½! ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Û¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½!
 					continue;
 				}
 			}
@@ -3449,10 +3428,10 @@ private:
 										  VkDebugUtilsMessengerCreateInfoEXT* pDebugMessengerCreateInfo,
 										  const VkAllocationCallbacks* pAllocator,
 										  VkDebugUtilsMessengerEXT* pDebugMessenger) 
-	{	// ¾Æ½±°Ôµµ ÀÌ vkCreateDebugUtilsMessengerEXT ¶ó´Â ÇÔ¼ö´Â, 'È®ÀåÇÔ¼ö(~EXT·Î ³¡³ª´Â ÇÔ¼ö)'ÀÌ±â ¶§¹®¿¡, 
-		// ÀÚµ¿À¸·Î ·ÎµùµÇÁö´Â ¾Ê½À´Ï´Ù. (³» InstanceÀÇ callbackÇÔ¼ö·Î) 
-		// ¿ì¸®´Â vkGetInstanceProcAddr()¸¦ »ç¿ëÇÏ¿©, Instnace¿Í ¹ÙÀÎµù½ÃÅ°°í, 
-		// ±× ¹ÙÀÎµùÇÑ ÇÔ¼öÀÇ ÁÖ¼Ò¸¦, Á÷Á¢ Ã£¾Æ¾ß ÇÕ´Ï´Ù.
+	{	// ï¿½Æ½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ vkCreateDebugUtilsMessengerEXT ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½, 'È®ï¿½ï¿½ï¿½Ô¼ï¿½(~EXTï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½)'ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+		// ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½. (ï¿½ï¿½ Instanceï¿½ï¿½ callbackï¿½Ô¼ï¿½ï¿½ï¿½) 
+		// ï¿½ì¸®ï¿½ï¿½ vkGetInstanceProcAddr()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, Instnaceï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Å°ï¿½ï¿½, 
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½, ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¾ï¿½ ï¿½Õ´Ï´ï¿½.
 		auto func = (PFN_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(this->instance, 
 																			  "vkCreateDebugUtilsMessengerEXT");
 		if (func != nullptr) {
@@ -3465,14 +3444,14 @@ private:
 	void destroyDebugUtilsMessengerEXT(VkInstance instance,
 									   VkDebugUtilsMessengerEXT DebugMessenger,
 									   const VkAllocationCallbacks* pAllocator)
-	{	// ¾Æ½±°Ôµµ ÀÌ vkCreateDebugUtilsMessengerEXT ¶ó´Â ÇÔ¼ö´Â, 'È®ÀåÇÔ¼ö(~EXT·Î ³¡³ª´Â ÇÔ¼ö)'ÀÌ±â ¶§¹®¿¡, 
-		// ÀÚµ¿À¸·Î ·ÎµùµÇÁö´Â ¾Ê½À´Ï´Ù. (³» InstanceÀÇ callbackÇÔ¼ö·Î) 
-		// ¿ì¸®´Â vkGetInstanceProcAddr()¸¦ »ç¿ëÇÏ¿©, Instnace¿Í ¹ÙÀÎµù½ÃÅ°°í, 
-		// ±× ¹ÙÀÎµùÇÑ ÇÔ¼öÀÇ ÁÖ¼Ò¸¦, Á÷Á¢ Ã£¾Æ¾ß ÇÕ´Ï´Ù.
+	{	// ï¿½Æ½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ vkCreateDebugUtilsMessengerEXT ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½, 'È®ï¿½ï¿½ï¿½Ô¼ï¿½(~EXTï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½)'ï¿½Ì±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, 
+		// ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½. (ï¿½ï¿½ Instanceï¿½ï¿½ callbackï¿½Ô¼ï¿½ï¿½ï¿½) 
+		// ï¿½ì¸®ï¿½ï¿½ vkGetInstanceProcAddr()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½, Instnaceï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½Å°ï¿½ï¿½, 
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ö¼Ò¸ï¿½, ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¾ï¿½ ï¿½Õ´Ï´ï¿½.
 		auto func = (PFN_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(this->instance,
 																			   "vkDestroyDebugUtilsMessengerEXT");
 		if (func != nullptr) {
-			func(instance, DebugMessenger, pAllocator);		// vkDestroyÇÔ¼öµéÀº ¸®ÅÏ°ªÀÌ ¾ø´Ù.
+			func(instance, DebugMessenger, pAllocator);		// vkDestroyï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		}
 		//else {
 		//	return VK_ERROR_EXTENSION_NOT_PRESENT;
@@ -3482,21 +3461,21 @@ private:
 	// 											const VkAllocationCallbacks* pAllocCallbacks,
 	// 											VkSurfaceKHR* pSurface) 
 	// {
-	// 	// glfwCreateWindowSurface() ÇÔ¼ö¿Í ³»ºÎ±¸Á¶¿Í ¿ø¸®°¡ °°Àº ÇÔ¼ö¸¦ ¸¸µé¾î º¸¾Ò´Ù.
+	// 	// glfwCreateWindowSurface() ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò´ï¿½.
 
-	// 	// VkWin32SurfaceCreateInfoKHR ¸¦ »ç¿ëÇÏ·Á¸é, #define VK_USE_PLATFORM_WIN32_KHR ¸¦ Á¤ÀÇÇØÁà¾ß ÇÑ´Ù.
+	// 	// VkWin32SurfaceCreateInfoKHR ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½, #define VK_USE_PLATFORM_WIN32_KHR ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 	// 	//VkWin32SurfaceCreateInfoKHR surfaceCreateInfo{};
 	// 	VkXcbSurfaceCreateInfoKHR surfaceCreateInfo{};
 	// 	surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
-	// 	// glfwGetWin32Window »ç¿ëÇÏ·Á¸é, 
+	// 	// glfwGetWin32Window ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½, 
 	// 	// #define GLFW_EXPOSE_NATIVE_WIN32
-	// 	// #include <GLFW/glfw3native.h> ÀÌ µÑÀ» include ÇØÁà¾ßÇÔ.
-	// 	//surfaceCreateInfo.hwnd = glfwGetWin32Window(window);		//(HWND)window; ÀÌ·¸°Ô ½áµµ µÇ³ª?
+	// 	// #include <GLFW/glfw3native.h> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ include ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+	// 	//surfaceCreateInfo.hwnd = glfwGetWin32Window(window);		//(HWND)window; ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½áµµ ï¿½Ç³ï¿½?
 	// 	surfaceCreateInfo.connection = glfwGetWindowUserPointer(window);
-	// 	// GetModuleHandle()ÇÔ¼ö´Â À©µµ¿ìAPIÀÇ ÇÔ¼öÀÎµí.	
-	// 	surfaceCreateInfo.window = GetModuleHandle(nullptr);		//(HINSTANCE)(this->instance); ÀÌ·¸°Ô ½áµµ µÇ³ª ?
+	// 	// GetModuleHandle()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½APIï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½Îµï¿½.	
+	// 	surfaceCreateInfo.window = GetModuleHandle(nullptr);		//(HINSTANCE)(this->instance); ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½áµµ ï¿½Ç³ï¿½ ?
 
-	// 	// ¸¶Âù°¡Áö·Î, vkCreateWin32SurfaceKHR()ÇÔ¼ö¸¦ ¾²·Á¸é, #define VK_USE_PLATFORM_WIN32_KHR ¸¦ Á¤ÀÇÇØÁà¾ß ÇÑ´Ù.
+	// 	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, vkCreateWin32SurfaceKHR()ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, #define VK_USE_PLATFORM_WIN32_KHR ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 	// 	//return vkCreateWin32SurfaceKHR(instance, &surfaceCreateInfo, pAllocCallbacks, pSurface);
 	// 	return vkCreateXcbSurfaceKHR(instance, &surfaceCreateInfo, pAllocCallbacks, pSurface);
 	// }
@@ -3505,7 +3484,7 @@ private:
 		std::optional<uint32_t> graphicsQueueFamilyIndex;
 		// It's actually possible that the queue families supporting drawing commands and the ones supporting presentation do not overlap
 		// But my GPU's graphicsQueueFamily and presentationQueueFamily does overlap.
-		// However, in any case(È¤½Ã¸ð¸£´Ï), graphicsQueueFamily¿Í presentationQueueFamily¸¦ ±¸ºÐÇØ¼­ Å½ÁöÇØº¸ÀÚ.
+		// However, in any case(È¤ï¿½Ã¸ð¸£´ï¿½), graphicsQueueFamilyï¿½ï¿½ presentationQueueFamilyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Å½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½.
 		std::optional<uint32_t> presentQueueFamilyIndex;
 		std::optional<uint32_t> computeQueueFamilyIndex;
 
@@ -3522,7 +3501,7 @@ private:
 		vkGetPhysicalDeviceQueueFamilyProperties(phyDevice, &QFCount, QFProperties.data());
 
 		std::cout << std::endl;
-		std::cout<< QFCount << std::endl;	// Ãâ·ÂÇÏ¸é 6³ª¿È.	(³» ±×·¡ÇÈÄ«µå¿¡´Â ÃÑ 6°³ÀÇ QueueFamily°¡ ÀÖÀ½.
+		std::cout<< QFCount << std::endl;	// ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 6ï¿½ï¿½ï¿½ï¿½.	(ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½Ä«ï¿½å¿¡ï¿½ï¿½ ï¿½ï¿½ 6ï¿½ï¿½ï¿½ï¿½ QueueFamilyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		
 		uint32_t i = 0;
 		VkBool32 isPresentSupported = false;
@@ -3552,7 +3531,7 @@ private:
 		}
 
 
-		// Á¤º¸Ãâ·Â¿ë for loop.
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ for loop.
 		uint32_t j = 0;
 		for (const auto& QFProperty : QFProperties)
 		{
@@ -3562,7 +3541,7 @@ private:
 			j++;
 		}
 		//
-		// Âü°í: ³» ±×·¡ÇÈÄ«µå QueueFamily ¸ñ·Ï.		
+		// ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½Ä«ï¿½ï¿½ QueueFamily ï¿½ï¿½ï¿½.		
 		// QFIndex: 0      QFProperty.queueFlags: 00000000000000000000000000001111	
 		//										( VK_QUEUE_GRAPHICS_BIT | VK_QUEUE_COMPUTE_BIT | VK_QUEUE_TRANSFER_BIT | VK_QUEUE_SPARSE_BINDING_BIT )
 		// QFIndex: 1      QFProperty.queueFlags: 00000000000000000000000000001100
@@ -3575,7 +3554,7 @@ private:
 		//										( VK_QUEUE_VIDEO_ENCODE_BIT_KHR ) | ( VK_QUEUE_TRANSFER_BIT | VK_QUEUE_SPARSE_BINDING_BIT )
 		// QFIndex: 5      QFProperty.queueFlags: 00000000000000000000000100001100
 		//										( VK_QUEUE_OPTICAL_FLOW_BIT_NV ) | ( VK_QUEUE_TRANSFER_BIT | VK_QUEUE_SPARSE_BINDING_BIT )
-		// (³» ±×·¡ÇÈÄ«µå¿¡´Â VK_QUEUE_PROTECTED_BIT ¸¦ °®Ãá QueueFamily´Â ¾øÀ½. ³ª¸ÓÁö QFproperty¿¡ ´ëÇØ¼­´Â, °®Ãá QueueFamily¸¦ °¡Áö°í ÀÖÀ½.)
+		// (ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½Ä«ï¿½å¿¡ï¿½ï¿½ VK_QUEUE_PROTECTED_BIT ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ QueueFamilyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ QFpropertyï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ QueueFamilyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.)
 		// 
 		// According to Vulkan specifications,
 		// typedef enum VkQueueFlagBits {
@@ -3648,7 +3627,7 @@ private:
 		vkGetPhysicalDeviceFeatures(phyDevice, &PhyDeFeatures);
 
 		//QueueFamilyIndices QFIndices;		// // to member variable.
-		QFIndices = findQueueFamilies(phyDevice);		// this->physicalDevice »ç¿ëÇÏ¸é ¾ÈµÊ!	this->physicalDevice°¡ pick µÇ±â Àü¿¡ ÀÌ ÇÔ¼ö°¡ »ç¿ëµÉ ¼ö ÀÖÀ¸¹Ç·Î!
+		QFIndices = findQueueFamilies(phyDevice);		// this->physicalDevice ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Èµï¿½!	this->physicalDeviceï¿½ï¿½ pick ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½!
 
 		bool isSuitable = false;
 		if ( (PhyDeProperties.deviceType == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU)
@@ -3681,9 +3660,9 @@ private:
 
 	// 	uint32_t fileSize = static_cast<uint32_t>(inputFile.tellg());
 	// 	std::vector<char> sourceTextBuffer(fileSize, 0);
-	// 	//char sourceTextBuffer[3000] = {""};			// ÀÌ ¹è¿­¼ö ÃæºÐÈ÷ Å©°Ô ¾ÈÇØÁÖ¸é, "syntax error, unexpected end of file" ¶ó°í ÇÏ¸é¼­, ½¦ÀÌÅÍ ÄÄÆÄÀÏ¸µ ¿À·ù¶ä.
+	// 	//char sourceTextBuffer[3000] = {""};			// ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½, "syntax error, unexpected end of file" ï¿½ï¿½ï¿½ ï¿½Ï¸é¼­, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
-	// 	inputFile.seekg(0);		// ÆÄÀÏÀÇ ¸ÇÃ³À½ À§Ä¡·Î ÀÌµ¿.
+	// 	inputFile.seekg(0);		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ìµï¿½.
 	// 	inputFile.read(sourceTextBuffer.data(), SOURCE_TEXT_MAX_SIZE);
 		
 	// 	shaderc::Compiler compiler;
@@ -3700,7 +3679,7 @@ private:
 	// 	//				 const char* input_file_name,
 	// 	//				 const char* entry_point_name,
 	// 	//				 const CompileOptions & options)
-	// 	// compiler.PreprocessGlsl() ¾ÈÇØÁÖ°í, ¹Ù·Î compiler.CompileGlslToSpv() ÇØÁàµµ µÊ.
+	// 	// compiler.PreprocessGlsl() ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½, ï¿½Ù·ï¿½ compiler.CompileGlslToSpv() ï¿½ï¿½ï¿½àµµ ï¿½ï¿½.
 	// 	// SPIR-V makes use of shader and program objects. Because SPIR-V is a binary format.
 	// 	shaderc::SpvCompilationResult compileResult;
 	// 	if (shaderType == "vert") {
@@ -3723,16 +3702,16 @@ private:
 	// 		std::cerr << compileResult.GetErrorMessage() << std::endl;
 	// 	}
 
-	// 	// shaderc::CompilationResult ¿Í shaderc::SpvCompilationResult ÀÇ Â÷ÀÌ´Â, 
-	// 	// using SpvCompilationResult = CompilationResult<uint32_t>; °¡ ´Ù ¸»ÇØÁØ´Ù.
+	// 	// shaderc::CompilationResult ï¿½ï¿½ shaderc::SpvCompilationResult ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½, 
+	// 	// using SpvCompilationResult = CompilationResult<uint32_t>; ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 	// 	if ((compileResult.cbegin() == nullptr)  ||  (compileResult.cbegin() == nullptr)) {
 	// 		throw std::runtime_error("failed to create SPIR-V compiled files.");
 	// 	}
 		
-	// 	// ÀÌ ¹æ½ÄÀ¸·Î compileµÈ ¹ÙÀÌ³Ê¸® °á°úµ¥ÀÌÅÍ¸¦ Àü´ÞÇÏ´Â ¹æ¹ýÀ» ¾Ë¾Æ³»´Â °ÍÀº, ÀÌ ¶óÀÌºê·¯¸®¸¦ ¸¸µçÀÌÀÇ ¿¹Á¦ÄÚµå¸¦ º¸Áö ¾ÊÀ¸¸é, ¾Ë±â ½±Áö ¾ÊÀ»µí.
+	// 	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ compileï¿½ï¿½ ï¿½ï¿½ï¿½Ì³Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ë±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	// 	std::vector<uint32_t> shaderModuleCode{compileResult.cbegin(), compileResult.cend()};
 
-	// 	VkShaderModuleCreateInfo shaderModuleCreateInfo{};		// ÀÌ struct »ý¼ºÇÒ¶§ ÃÊ±âÈ­ ¹Ýµå½Ã ÇØÁà¾ß ÇÔ.
+	// 	VkShaderModuleCreateInfo shaderModuleCreateInfo{};		// ï¿½ï¿½ struct ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ýµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
 	// 	shaderModuleCreateInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
 	// 	shaderModuleCreateInfo.codeSize = shaderModuleCode.size() * size_t(sizeof(uint32_t) / sizeof(char));
 	// 	shaderModuleCreateInfo.pCode = shaderModuleCode.data();
@@ -3807,7 +3786,7 @@ private:
 		createFrameBuffers();
 	}
 
-	// ÅëÇÕÇÏ°Å³ª Æó±âÇÒ¸¸ÇÑ ÇÔ¼öµé. ±×·¯³ª º»¹®ÇÔ¼ö¿¡¼­ ¾²°íÀÖ´Â ÇÔ¼öµé ////////////////////////////
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ////////////////////////////
 	void copyBuffer_(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size) {
 		
 		VkCommandBuffer tempCommandBuffer;
@@ -4009,7 +3988,7 @@ private:
 				//	VK_IMAGE_CREATE_SPARSE_ALIASED_BIT = 0x00000004,
 				//	VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT = 0x00000008,
 				//	VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT = 0x00000010,
-				//	µîµî
+				//	ï¿½ï¿½ï¿½
 				//}
 
 
@@ -4087,8 +4066,8 @@ private:
 		imgCreateInfo.format = possibleFormat;	// or VK_FORMAT_R32G32B32A32_SFLOAT;
 		//VkExtent3D Extent = { (uint32_t)STORAGE_IMAGE_WIDTH, (uint32_t)STORAGE_IMAGE_HEIGHT, (uint32_t)STORAGE_IMAGE_DEPTH };
 		imgCreateInfo.extent = extent;
-		imgCreateInfo.arrayLayers = 1;	// Cube maps, Animated textures, and texture arrays of shadow maps and other similar collections. µî¿¡ ¾²ÀÌ´Â ÆÄ¸®¹ÌÅÍ´Ù.
-		//storageImgCreateInfo.flags = VK_IMAGE_CREATE_SPARSE_BINDING_BIT;	// image¿¡´Â sparse±â´É ¸ø¾²³ªº½.
+		imgCreateInfo.arrayLayers = 1;	// Cube maps, Animated textures, and texture arrays of shadow maps and other similar collections. ï¿½î¿¡ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Í´ï¿½.
+		//storageImgCreateInfo.flags = VK_IMAGE_CREATE_SPARSE_BINDING_BIT;	// imageï¿½ï¿½ï¿½ï¿½ sparseï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
 		if (vkCreateImage(this->device, &imgCreateInfo, nullptr, &image) != VK_SUCCESS) {
 			throw std::runtime_error("failed to create an image.");
@@ -4106,20 +4085,20 @@ private:
 														   VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
 		// memory property > memType > heapType
-		// heapType: GPU Àü¿ë heap¸Þ¸ð¸®ÀÎÁö(= DEVICE_LOCAL), ½Ã½ºÅÛ(CPU) Àü¿ë heap¸Þ¸ð¸® ÀÎÁö(= not DEVICE_LOCAL).
-		// memType: DEVICE_LOCAL, HOST_VISIBLE, HOST_CACHED, HOST_COHERENT µîµîÀÇ, ÇÒ´çµÉ ¸Þ¸ð¸®ÀÇ Æ¯¼º¿¡ µû¶ó, ºÐ·ùµÇ´Â ¸Þ¸ð¸®À¯Çü. 
-		// °¡Àå Å« ¿ÀÇØ´Â ¸Þ¸ð¸® À¯ÇüÀÌ ¹°¸®ÀûÀ¸·Î ºÐ¸®µÇ¾î ÀÖ´Ù´Â °ÍÀÌ´Ù. ±×·¸Áö ¾Ê´Ù. ¸Þ¸ð¸®ÀÇ '³í¸®Àû ºÐ¸®'¿Í '¹°¸®Àû ºÐ¸®'¸¦ ±¸ºÐÇØ¾ß ÇÑ´Ù.
-		// '¸Þ¸ð¸® type'Àº, »ç¿ëÀÚ°¡ Á¤ÇÑ ¸Þ¸ð¸® ÇÒ´ç¹æ¹ý°ú »ç¿ë¿ëµµ¿¡ µû¶ó, '³í¸®ÀûÀ¸·Î ºÐ¸®'ÇÏ´Â °Í¿¡ ÇØ´çÇÏ°í,
-		// 'heap type'Àº, ½ÇÁ¦ ¸Þ¸ð¸®ÀÇ '¹°¸®Àû°ø°£À» ºÐ¸®'ÇÏ´Â °Í¿¡ ÇØ´çÇÑ´Ù.
-		// ¸Þ¸ð¸® typeÀº, µå¶óÀÌ¹ö¿Í °ø±Þ¾÷Ã¼¿¡ µû¶ó ´Ù¸¥, ±×µé¸¸ÀÌ ¾Ë°íÀÖ´Â, ±¸Çö ¼¼ºÎ »çÇ×ÀÌ¸ç, ±¸ÇöÀÚ/°ø±Þ¾÷Ã¼¸¸ÀÌ È®½ÇÈ÷ ¾Ë°í ÀÖ´Â ³»¿ëÀÌ´Ù.
-		// µû¶ó¼­ ¿ì¸®´Â vulkanÀÇ queryÇÔ¼ö·Î, queryÇÏ¿©, ¸Þ¸ð¸®typeIndex¸¦ ¾Ë¾Æ³»´Â ¼ö ¹Û¿¡ ¾ø´Ù.
+		// heapType: GPU ï¿½ï¿½ï¿½ï¿½ heapï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½(= DEVICE_LOCAL), ï¿½Ã½ï¿½ï¿½ï¿½(CPU) ï¿½ï¿½ï¿½ï¿½ heapï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½(= not DEVICE_LOCAL).
+		// memType: DEVICE_LOCAL, HOST_VISIBLE, HOST_CACHED, HOST_COHERENT ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ò´ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ð·ï¿½ï¿½Ç´ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½. 
+		// ï¿½ï¿½ï¿½ï¿½ Å« ï¿½ï¿½ï¿½Ø´ï¿½ ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ï¿½Ç¾ï¿½ ï¿½Ö´Ù´ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½. ï¿½Þ¸ï¿½ï¿½ï¿½ 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½'ï¿½ï¿½ 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
+		// 'ï¿½Þ¸ï¿½ type'ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½Ò´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½'ï¿½Ï´ï¿½ ï¿½Í¿ï¿½ ï¿½Ø´ï¿½ï¿½Ï°ï¿½,
+		// 'heap type'ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ï¿½ï¿½ 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½'ï¿½Ï´ï¿½ ï¿½Í¿ï¿½ ï¿½Ø´ï¿½ï¿½Ñ´ï¿½.
+		// ï¿½Þ¸ï¿½ typeï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þ¾ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½, ï¿½×µé¸¸ï¿½ï¿½ ï¿½Ë°ï¿½ï¿½Ö´ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½Þ¾ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½Ë°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ì¸®ï¿½ï¿½ vulkanï¿½ï¿½ queryï¿½Ô¼ï¿½ï¿½ï¿½, queryï¿½Ï¿ï¿½, ï¿½Þ¸ï¿½typeIndexï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		VkPhysicalDeviceMemoryProperties PhyDeMemProperty{};
 		vkGetPhysicalDeviceMemoryProperties(this->physicalDevice, &PhyDeMemProperty);
 		uint32_t heapIndex = PhyDeMemProperty.memoryTypes[memAllocInfo.memoryTypeIndex].heapIndex;
 		std::cout << "PhyDeMemProperty.memoryHeaps[heapIndex].size: " << PhyDeMemProperty.memoryHeaps[heapIndex].size << std::endl;
-		// ÀüÃ¼ heap¸Þ¸ð¸®¸¦ ¾µ¼öÀÖ´Â ÀüÃ¼¾çÀº 12703498240¹ÙÀÌÆ®ÀÎµ¥,
-		// ÇÑ image´ç ¾µ¼öÀÖ´Â heap¸Þ¸ð¸® ¾çÀº 224395264ÀÎµí. 
-		// °°Àº ¿ëµµ, ¸Þ¸ð¸®Å¸ÀÔÀÇ storage image´Â, ³» GPU¸Þ¸ð¸®¿¡¼­´Â, ÃÑ 56.612Àå Á¤µµ±îÁö¸¸ ÇÒ´ç°¡´ÉÇÏ³×.
+		// ï¿½ï¿½Ã¼ heapï¿½Þ¸ð¸®¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ 12703498240ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Îµï¿½,
+		// ï¿½ï¿½ imageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ heapï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ 224395264ï¿½Îµï¿½. 
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ëµµ, ï¿½Þ¸ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ storage imageï¿½ï¿½, ï¿½ï¿½ GPUï¿½Þ¸ð¸®¿ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ 56.612ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ç°¡ï¿½ï¿½ï¿½Ï³ï¿½.
 
 		if (vkAllocateMemory(this->device, &memAllocInfo, nullptr, &imageMemory) != VK_SUCCESS) {
 			throw std::runtime_error("failed to allocate image Memory.");
@@ -4176,7 +4155,7 @@ private:
 		samplerCreateInfo.borderColor = VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK;
 		samplerCreateInfo.anisotropyEnable = VK_FALSE;
 		//storageSamplerCreateInfo.maxAnisotropy = ;
-		// ¾Æ·¡´Â depth buffer sampler¿¡ Àû¿ëµÇ´Â ³»¿ë.
+		// ï¿½Æ·ï¿½ï¿½ï¿½ depth buffer samplerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		//samplerInfo.compareEnable = ;
 		//samplerInfo.compareOp = ;
 
@@ -4200,7 +4179,7 @@ private:
 
 
 
-		VkCommandBufferBeginInfo comBuffBeginInfo{};							// ¿©±â¼­ {} ÀÌ°Å ¾ÈÇß´Ù°í vkBeginCommandBuffer¿¡¼­ ¿À·ù³µ¾úÀ½. ÀÌ¶§ ¿À·ù¸Þ½ÃÁöµµ ¾È³ª¿À°í ±×³É ÇÁ·Î±×·¥ÀÌ²¨Á®¼­ ¿À·ù Ã£´Âµ¥ Èûµé¾úÀ½. struct¿¡ °ª •û³õÁö¸»°í ´Ù ³ÖÀ»°Í.
+		VkCommandBufferBeginInfo comBuffBeginInfo{};							// ï¿½ï¿½ï¿½â¼­ {} ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ß´Ù°ï¿½ vkBeginCommandBufferï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½Ì²ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. structï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		comBuffBeginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 		comBuffBeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
 
@@ -4240,7 +4219,7 @@ private:
 		VkImageMemoryBarrier imgMemBarrier{};
 		imgMemBarrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
 		imgMemBarrier.image = accessedImage;
-		// shared memory ±â´É ¾µ¶§, Àû´Â ÆÄ¶ó¹ÌÅÍÀÎµí.
+		// shared memory ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½.
 		imgMemBarrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 		imgMemBarrier.oldLayout = oldLayout;
 		imgMemBarrier.srcAccessMask = srcAccessMask;
@@ -4308,8 +4287,8 @@ private:
 	{
 			VkBufferImageCopy copyRegion{};
 			copyRegion.bufferOffset = 0;
-			// bufferRowLength¿Í bufferImageHeight ÆÄ¶ó¹ÌÅÍ´Â, ÀÌ¹ÌÁöµ¥ÀÌÅÍ Å©±â°¡ ¹öÆÛÅ©±âº¸´Ù ÀÛÀ» ¶§, ±×·¡¼­ ¹öÆÛ ¸Þ¸ð¸® °ø°£ÀÌ ³²À»¶§¿¡, ÀÛ¼ºÇÏ´Â ÀÎÀÚÀÎ µí.
-			// µÎ ÆÄ¶ó¹ÌÅÍ°¡ 0ÀÌ¸é, ¹öÆÛ°ø°£¿¡ °ø°£³¶ºñ¾øÀÌ, ÀÌ¹ÌÁöµ¥ÀÌÅÍ·Î ²Ë Â÷ÀÖ´Ù´Â ÀÇ¹Ì.
+			// bufferRowLengthï¿½ï¿½ bufferImageHeight ï¿½Ä¶ï¿½ï¿½ï¿½Í´ï¿½, ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½Å©ï¿½âº¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Û¼ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½.
+			// ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í°ï¿½ 0ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½Û°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Ù´ï¿½ ï¿½Ç¹ï¿½.
 			copyRegion.bufferRowLength = 0;
 			copyRegion.bufferImageHeight = 0;
 			copyRegion.imageOffset = imageOffset;
@@ -4462,7 +4441,7 @@ private:
 		//
 		// You don't need to explicitly clean up descriptor sets, because they will be automatically freed 
 		// when the descriptor pool is destroyed.
-		//vkDestroyDescriptorSetÀº poolÀÌ destroyµÉ¶§ ÇÔ²² ÀÚµ¿À¸·Î destoryµÇ´Âµí. descriptorµµ ¸¶Âù°¡Áö.
+		//vkDestroyDescriptorSetï¿½ï¿½ poolï¿½ï¿½ destroyï¿½É¶ï¿½ ï¿½Ô²ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ destoryï¿½Ç´Âµï¿½. descriptorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 		vkDestroyDescriptorPool(this->device, this->descriptorPool, nullptr);
 		vkDestroyDescriptorSetLayout(this->device, this->descriptorSetLayout, nullptr);
 		//
@@ -4537,9 +4516,9 @@ private:
 
 		vkDestroyCommandPool(this->device, gctCommandPool, nullptr);
 
-		//vkDestroyQueueµµ µû·Î ¾ø´Â µí!
+		//vkDestroyQueueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!
 		vkDestroyDevice(this->device, nullptr);
-		//vkDestroyPhysicalDevice ÇÔ¼ö´Â µû·Î ¾øÀ½.	// vkEnumeratePhysicalDevices()ÇÔ¼ö »ç¿ëÇÒ¶§, ÀÌ¹Ì PhysicalDevice°¡ instance¿Í ¸µÅ©µÇ¾î¼­, instance°¡ destroyµÉ¶§, PhysicalDeviceµµ °°ÀÌ ÀÚµ¿À¸·Î ¹ÝÈ¯µÇ´Âµí.
+		//vkDestroyPhysicalDevice ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.	// vkEnumeratePhysicalDevices()ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½, ï¿½Ì¹ï¿½ PhysicalDeviceï¿½ï¿½ instanceï¿½ï¿½ ï¿½ï¿½Å©ï¿½Ç¾î¼­, instanceï¿½ï¿½ destroyï¿½É¶ï¿½, PhysicalDeviceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ç´Âµï¿½.
 
 		vkDestroySurfaceKHR(this->instance, this->surface, nullptr);
 		if (gl_enableValidationLayers) {
@@ -4649,7 +4628,7 @@ private:
 	std::vector<VkSemaphore> imageAvailableSemaphores;
 	std::vector<VkFence> inFlightFences;
 	uint32_t inFlightFrame = 0;
-	// bool framebufferResized = false;			// public memeber º¯¼ö·Î ¿Å±è.
+	// bool framebufferResized = false;			// public memeber ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½.
 
 };
 
